@@ -47,3 +47,6 @@ Expected:
 README.md
 designces-core
 
+Step 2 — LocalWP themes folder mein junction banayein
+
+Git Bash mein ye exact command run karein:
