@@ -20,3 +20,30 @@ Agar hum designces-core ko manually copy kar dein:
 E:\WP-Dev-Lab\designces-core
 
 C:\Users\ONLINE\Local Sites\designces-dev\...\themes\designces-core
+
+
+# Bilkul — is step ka main purpose Junction banana nahi, balki Git Bash ko correct Git repository ke andar le jaana aur verify karna hai.
+
+Step 1 — Git Bash open karein
+
+Git Bash mein ye command run karein:
+
+cd /e/WP-Dev-Lab
+
+Phir:
+
+pwd
+
+Expected:
+
+/e/WP-Dev-Lab
+
+Aur:
+
+ls
+
+Expected:
+
+README.md
+designces-core
+
