@@ -50,3 +50,7 @@ designces-core
 Step 2 — LocalWP themes folder mein junction banayein
 
 Git Bash mein ye exact command run karein:
+
+
+For Home :
+cmd //c mklink /J "C:\Users\ONLINE\Local Sites\designces-dev\app\public\wp-content\themes\designces-core" "E:\WP-Dev-Lab\designces-core"
