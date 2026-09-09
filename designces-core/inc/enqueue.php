@@ -8,13 +8,21 @@
 function designces_core_enqueue_assets() {
 
 	/**
-	 * Custom Google Fonts.
-	 *
-	 * Source Sans Pro + Nunito
+	 * Custom Google Font: Source Sans Pro.
 	 */
 	wp_enqueue_style(
-		'designces-core-fonts',
-		'https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,600&display=swap',
+		'designces-core-source-sans-pro',
+		'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,600&display=swap',
+		array(),
+		null
+	);
+
+	/**
+	 * Custom Google Font: Nunito.
+	 */
+	wp_enqueue_style(
+		'designces-core-nunito',
+		'https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap',
 		array(),
 		null
 	);
@@ -25,7 +33,10 @@ function designces_core_enqueue_assets() {
 	wp_enqueue_style(
 		'designces-core-main',
 		get_template_directory_uri() . '/assets/css/main.css',
-		array( 'designces-core-fonts' ),
+		array(
+			'designces-core-source-sans-pro',
+			'designces-core-nunito',
+		),
 		filemtime( get_template_directory() . '/assets/css/main.css' )
 	);
 

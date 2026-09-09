@@ -1,5 +1,9 @@
+// Custom.scss 
+// Option A: Include all of Bootstrap
+
 @import "bootstrap-5.3.8/scss/bootstrap";
 
+// Add custom code after this
 body {
-    color: aqua;
+    color: gray;
 }
