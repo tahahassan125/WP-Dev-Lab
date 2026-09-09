@@ -28,6 +28,16 @@ function designces_core_enqueue_assets() {
 	);
 
 	/**
+	 * Bootstrap Icons.
+	 */
+	wp_enqueue_style(
+		'designces-core-bootstrap-icons',
+		get_template_directory_uri() . '/assets/icons/bootstrap-icons-1.13.1/bootstrap-icons.css',
+		array(),
+		'1.13.1'
+	);
+
+	/**
 	 * Main stylesheet.
 	 */
 	wp_enqueue_style(
