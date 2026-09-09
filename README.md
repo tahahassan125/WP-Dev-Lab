@@ -118,3 +118,6 @@ body {
 Created:
 inc/
 └── enqueue.php
+
+
+https://github.com/RaddyTheBrand/PawsGang-eCommerce-Theme-WooCommerce/blob/main/header.php
