@@ -8,12 +8,24 @@
 function designces_core_enqueue_assets() {
 
 	/**
+	 * Custom Google Fonts.
+	 *
+	 * Source Sans Pro + Nunito
+	 */
+	wp_enqueue_style(
+		'designces-core-fonts',
+		'https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,600&display=swap',
+		array(),
+		null
+	);
+
+	/**
 	 * Main stylesheet.
 	 */
 	wp_enqueue_style(
 		'designces-core-main',
 		get_template_directory_uri() . '/assets/css/main.css',
-		array(),
+		array( 'designces-core-fonts' ),
 		filemtime( get_template_directory() . '/assets/css/main.css' )
 	);
 
