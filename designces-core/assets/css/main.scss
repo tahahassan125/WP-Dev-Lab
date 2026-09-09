@@ -1,9 +1,112 @@
 // Custom.scss 
 // Option A: Include all of Bootstrap
 
+// ========================================
+// DESIGNCES CORE — THEME VARIABLES
+// ========================================
+
+// Brand colors.
+$primary: rgb(127, 24, 127);
+$primary-opacity-8: rgba(127, 24, 127, 0.8);
+$gray: #E6E6E6;
+$sale: rgba(167, 4, 4, 0.8);
+
+// Typography.
+$headings-font-family: 'Nunito', sans-serif;
+$headings-font-weight: 800;
+//$font-family-base: 'Poppins', sans-serif;
+$font-family-base: 'Source Sans Pro', sans-serif;
+
+// ========================================
+// BOOTSTRAP THEME COLORS
+// ========================================
+
+$theme-colors: (
+	"primary": $primary,
+	"primary-opacity-8": $primary-opacity-8,
+	"gray": $gray,
+	"sale": $sale
+);
+
+
+// ========================================
+// CUSTOM THEME COLORS
+// ========================================
+
+$custom-color: (
+	"icon-background": rgba(127, 24, 127, 0.2)
+);
+
+$theme-colors: map-merge(
+	$theme-colors,
+	$custom-color
+);
+
+
+// ========================================
+// CUSTOM BOOTSTRAP UTILITIES
+// ========================================
+
+$utilities: (
+	"rounded": (
+		property: border-radius,
+		class: rounded,
+		values: (
+			null: 1rem,
+			circle: 50%
+		)
+	)
+);
+
+
+// ========================================
+// BOOTSTRAP
+// ========================================
+
 @import "bootstrap-5.3.8/scss/bootstrap";
 
-// Add custom code after this
-body {
-    color: gray;
+
+// ========================================
+// CUSTOM COMPONENTS
+// ========================================
+
+/************** HEADER **************/
+
+/* Announcement Bar */
+
+.announcement-bar {
+	font-size: 0.8rem;
+	border-bottom: 1px solid var(--bs-gray);
+
+	&__contacts,
+	&__benefits {
+		padding: 0;
+		margin: 0 -10px;
+		list-style-type: none;
+		display: inline-flex;
+	}
+
+	&__item {
+		margin: 0 10px;
+		display: flex;
+		align-items: center;
+	}
+
+	&__icon {
+		background-color: var(--bs-icon-background);
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 30px;
+		height: 30px;
+		margin-right: 6px;
+	}
+
+	&__link {
+		text-decoration: none;
+	}
+
+	@include media-breakpoint-down(lg) {
+		display: none;
+	}
 }
