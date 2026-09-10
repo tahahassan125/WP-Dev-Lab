@@ -199,3 +199,18 @@ WC()->cart
 
 #### Humne guard rakha:
 if ( function_exists( 'WC' ) && WC()->cart ) :
+
+
+### Pehle existing _s WooCommerce implementation ko samjhenge
+
+Aapke woocommerce.php mein already:
+WooCommerce theme support
+WooCommerce CSS
+WooCommerce wrappers
+Related products
+Cart link
+Cart fragments
+Mini cart
+
+sab موجود hain.
+Reference ka Ajax cart code same problem solve karta hai jo _s already solve kar raha hai.
