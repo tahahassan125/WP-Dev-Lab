@@ -188,3 +188,14 @@ Bootstrap 5.3.8
 Custom Components
       ↓
 Announcement Bar
+
+
+### Ek important WooCommerce improvement
+
+Reference directly karta hai:
+wc_get_cart_url()
+aur:
+WC()->cart
+
+#### Humne guard rakha:
+if ( function_exists( 'WC' ) && WC()->cart ) :
