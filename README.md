@@ -121,3 +121,54 @@ inc/
 
 
 https://github.com/RaddyTheBrand/PawsGang-eCommerce-Theme-WooCommerce/blob/main/header.php
+
+
+
+🎯 Design Rule
+
+### Reference website
+→ same visual output
+
+### Yani hum reference ki actual values ko preserve karenge:
+
+colors
+font sizes
+font weights
+spacing
+margins/padding
+icon size
+icon background
+borders
+Bootstrap breakpoints
+column widths
+alignment
+responsive behavior
+visibility rules
+
+Lekin implementation better hogi:
+Reference HTML
+      ↓
+Semantic analysis
+      ↓
+Better custom class names
+      ↓
+Clean WordPress/PHP
+      ↓
+Same CSS values
+      ↓
+Same visual result
+
+### Ek important distinction
+
+"Better code" ≠ "different design."
+
+Code quality       → improve
+Naming             → improve
+Structure           → improve
+Accessibility       → improve
+WordPress practices → improve
+Maintainability     → improve
+
+Visual values       → preserve
+Visual spacing      → preserve
+Visual behavior     → preserve
