@@ -21,6 +21,7 @@ $font-family-base: 'Source Sans Pro', sans-serif;
 // BOOTSTRAP THEME COLORS
 // ========================================
 
+// ye Bootstrap utilities/components ke liye custom theme colors generate karta hai.
 $theme-colors: (
 	"primary": $primary,
 	"primary-opacity-8": $primary-opacity-8,
@@ -37,10 +38,8 @@ $custom-color: (
 	"icon-background": rgba(127, 24, 127, 0.2)
 );
 
-$theme-colors: map-merge(
-	$theme-colors,
-	$custom-color
-);
+$theme-colors: map-merge($theme-colors,
+		$custom-color);
 
 
 // ========================================
@@ -48,14 +47,10 @@ $theme-colors: map-merge(
 // ========================================
 
 $utilities: (
-	"rounded": (
-		property: border-radius,
+	"rounded": (property: border-radius,
 		class: rounded,
-		values: (
-			null: 1rem,
-			circle: 50%
-		)
-	)
+		values: (null: 1rem,
+			circle: 50%))
 );
 
 
@@ -103,7 +98,12 @@ $utilities: (
 	}
 
 	&__link {
-		text-decoration: none;
+		// No custom styling yet. because  HTML mein already Bootstrap text-decoration: none; hai
+		// But // Future custom link styling.
+
+		//font-weight: 600;
+		//transition: color 0.2s ease;
+
 	}
 
 	@include media-breakpoint-down(lg) {

@@ -11696,9 +11696,6 @@ textarea.form-control-lg {
   height: 30px;
   margin-right: 6px;
 }
-.announcement-bar__link {
-  text-decoration: none;
-}
 @media (max-width: 991.98px) {
   .announcement-bar {
     display: none;

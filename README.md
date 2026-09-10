@@ -172,3 +172,19 @@ Maintainability     → improve
 Visual values       → preserve
 Visual spacing      → preserve
 Visual behavior     → preserve
+
+### Current main.scss flow
+
+Theme Variables
+      ↓
+Theme Colors
+      ↓
+Custom Colors
+      ↓
+Custom Utilities
+      ↓
+Bootstrap 5.3.8
+      ↓
+Custom Components
+      ↓
+Announcement Bar
