@@ -110,3 +110,49 @@ $utilities: (
 		display: none;
 	}
 }
+
+
+/* Main Header */
+
+.site-header {
+	&__search {
+		.aws-search-field {
+			font-size: 0.9rem;
+			padding-left: 1.4rem;
+			border-radius: 20px !important;
+		}
+	}
+}
+
+
+/* Main Navigation */
+
+.main-navigation {
+	font-weight: 600;
+
+	.current-menu-item {
+		background-color: rgb(149, 33, 149);
+	}
+
+	a {
+		text-transform: uppercase;
+		color: var(--bs-white);
+		padding: 0.6rem 1.4rem;
+
+		&:hover {
+			background-color: rgb(149, 33, 149);
+		}
+	}
+
+	.menu-toggle {
+		background-color: $primary;
+		color: $white;
+		border: none;
+	}
+
+	.sub-menu {
+		li {
+			background-color: $primary;
+		}
+	}
+}

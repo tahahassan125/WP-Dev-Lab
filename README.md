@@ -214,3 +214,11 @@ Mini cart
 
 sab موجود hain.
 Reference ka Ajax cart code same problem solve karta hai jo _s already solve kar raha hai.
+
+
+
+
+### Comments Rule -- code readability/documentation
+Jee, bilkul. Aapka point code readability/documentation ka hai, aur is case mein comments aise hone chahiye ke future mein sirf comment dekh kar immediately samajh aa jaye ke kaunsi file/source ko enqueue kiya ja raha hai aur uska role kya hai.
+
+Is tarah enqueue.php future mein read karte waqt source → purpose → relationship teenon immediately clear rahenge.

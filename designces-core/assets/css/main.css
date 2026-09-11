@@ -11700,4 +11700,35 @@ textarea.form-control-lg {
   .announcement-bar {
     display: none;
   }
+}
+
+/* Main Header */
+.site-header__search .aws-search-field {
+  font-size: 0.9rem;
+  padding-left: 1.4rem;
+  border-radius: 20px !important;
+}
+
+/* Main Navigation */
+.main-navigation {
+  font-weight: 600;
+}
+.main-navigation .current-menu-item {
+  background-color: rgb(149, 33, 149);
+}
+.main-navigation a {
+  text-transform: uppercase;
+  color: var(--bs-white);
+  padding: 0.6rem 1.4rem;
+}
+.main-navigation a:hover {
+  background-color: rgb(149, 33, 149);
+}
+.main-navigation .menu-toggle {
+  background-color: rgb(127, 24, 127);
+  color: #fff;
+  border: none;
+}
+.main-navigation .sub-menu li {
+  background-color: rgb(127, 24, 127);
 }/*# sourceMappingURL=main.css.map */

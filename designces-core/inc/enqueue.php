@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Enqueue scripts and styles.
  *
@@ -17,6 +18,7 @@ function designces_core_enqueue_assets() {
 		null
 	);
 
+
 	/**
 	 * Custom Google Font: Nunito.
 	 */
@@ -26,6 +28,7 @@ function designces_core_enqueue_assets() {
 		array(),
 		null
 	);
+
 
 	/**
 	 * Bootstrap Icons.
@@ -37,18 +40,38 @@ function designces_core_enqueue_assets() {
 		'1.13.1'
 	);
 
+
 	/**
-	 * Main stylesheet.
+	 * Enqueue the theme stylesheet (style.css).
+	 *
+	 * This is the root stylesheet required by WordPress and contains
+	 * the theme's base/Underscores styles.
+	 */
+	wp_enqueue_style(
+		'designces-core-style',
+		get_stylesheet_uri(),
+		array(),
+		_S_VERSION
+	);
+
+
+	/**
+	 * Enqueue the compiled main stylesheet (main.css).
+	 *
+	 * This file is generated from assets/css/main.scss and contains
+	 * Bootstrap plus the theme's custom styles.
 	 */
 	wp_enqueue_style(
 		'designces-core-main',
 		get_template_directory_uri() . '/assets/css/main.css',
 		array(
+			'designces-core-style',
 			'designces-core-source-sans-pro',
 			'designces-core-nunito',
 		),
 		filemtime( get_template_directory() . '/assets/css/main.css' )
 	);
+
 
 	/**
 	 * Navigation script.
@@ -60,6 +83,7 @@ function designces_core_enqueue_assets() {
 		_S_VERSION,
 		true
 	);
+
 
 	/**
 	 * Comment reply script.
