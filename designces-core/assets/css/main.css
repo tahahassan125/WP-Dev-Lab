@@ -11731,4 +11731,11 @@ textarea.form-control-lg {
 }
 .main-navigation .sub-menu li {
   background-color: rgb(127, 24, 127);
+}
+
+/************** FRONT PAGE **************/
+/**************** SLIDER ****************/
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+  width: 9%;
 }/*# sourceMappingURL=main.css.map */

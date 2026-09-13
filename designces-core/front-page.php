@@ -12,6 +12,8 @@ get_header();
 
 	<?php
 	get_template_part( 'template-parts/front-page/hero', 'carousel' );
+
+	get_template_part( 'template-parts/front-page/popular', 'products' );
 	?>
 
 </main><!-- #main -->
