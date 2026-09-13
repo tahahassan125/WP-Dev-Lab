@@ -11738,4 +11738,22 @@ textarea.form-control-lg {
 .carousel .carousel-control-prev,
 .carousel .carousel-control-next {
   width: 9%;
+}
+
+/************** CATEGORIES **************/
+.categories {
+  background-color: #F9F9F9;
+}
+.categories .categories__col {
+  height: 212px;
+}
+.categories .categories__col img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 768px) {
+  .categories .categories__col {
+    height: 336px;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -58,7 +58,20 @@ cmd //c mklink /J "C:\Users\ONLINE\Local Sites\designces-dev\app\public\wp-conte
 
 
 
+
+### Plugins i installed 
+
+woocommerce  (but prducts mainay filhaal sample-data folder sai products import kiay thay -- C:\Users\Taha\Local Sites\designces-dev\app\public\wp-content\plugins\woocommerce\sample-data )
+advanced woo search
+
+
+
 ## Designces Core — Development Progress
+
+
+
+
+
 
 1. Theme Foundation
 Created a custom WordPress theme named designces-core.

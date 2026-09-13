@@ -168,3 +168,25 @@ $utilities: (
 		width: 9%;
 	}
 }
+
+
+/************** CATEGORIES **************/
+
+.categories {
+	background-color: #F9F9F9;
+
+	.categories__col {
+		height: 212px;
+
+		img {
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		.categories__col {
+			height: 336px;
+		}
+	}
+}
