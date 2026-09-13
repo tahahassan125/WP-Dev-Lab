@@ -81,7 +81,7 @@ Within the download you’ll find the following directories and files, logically
   <summary>Download contents</summary>
 
   ```text
-  bootstrap/
+  bootstrap/ 
   ├── css/
   │   ├── bootstrap-grid.css
   │   ├── bootstrap-grid.css.map

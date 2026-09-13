@@ -6,7 +6,8 @@
  * @package Designces_Core
  */
 
-function designces_core_enqueue_assets() {
+function designces_core_enqueue_assets()
+{
 
 	/**
 	 * Custom Google Font: Source Sans Pro.
@@ -69,7 +70,7 @@ function designces_core_enqueue_assets() {
 			'designces-core-source-sans-pro',
 			'designces-core-nunito',
 		),
-		filemtime( get_template_directory() . '/assets/css/main.css' )
+		filemtime(get_template_directory() . '/assets/css/main.css')
 	);
 
 
@@ -84,13 +85,38 @@ function designces_core_enqueue_assets() {
 		true
 	);
 
+	/**
+	 * Bootstrap JavaScript.
+	 *
+	 * Includes Popper.
+	 */
+	wp_enqueue_script(
+		'designces-core-bootstrap',
+		get_template_directory_uri() . '/assets/css/bootstrap-5.3.8/dist/js/bootstrap.bundle.min.js',
+		array(),
+		'5.3.8',
+		true
+	);
+
+
+	/**
+	 * Custom theme JavaScript.
+	 */
+	wp_enqueue_script(
+		'designces-core-script',
+		get_template_directory_uri() . '/assets/js/script.js',
+		array('designces-core-bootstrap'),
+		filemtime(get_template_directory() . '/assets/js/script.js'),
+		true
+	);
+
 
 	/**
 	 * Comment reply script.
 	 */
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'designces_core_enqueue_assets' );
+add_action('wp_enqueue_scripts', 'designces_core_enqueue_assets');
