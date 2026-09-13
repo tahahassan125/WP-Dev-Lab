@@ -11740,6 +11740,16 @@ textarea.form-control-lg {
   width: 9%;
 }
 
+/************** POPULAR PRODUCTS **************/
+.popular-products .add_to_cart_button {
+  display: block !important;
+  text-align: center;
+}
+.popular-products .attachment-woocommerce_thumbnail {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
 /************** CATEGORIES **************/
 .categories {
   background-color: #F9F9F9;
@@ -11756,4 +11766,14 @@ textarea.form-control-lg {
   .categories .categories__col {
     height: 336px;
   }
+}
+
+/************** SPECIAL OFFERS **************/
+.special-offers .add_to_cart_button {
+  display: block !important;
+  text-align: center;
+}
+.special-offers .attachment-woocommerce_thumbnail {
+  border-radius: 20px;
+  overflow: hidden;
 }/*# sourceMappingURL=main.css.map */

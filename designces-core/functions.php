@@ -115,11 +115,15 @@ function designces_core_content_width() {
 add_action( 'after_setup_theme', 'designces_core_content_width', 0 );
 
 /**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function designces_core_widgets_init() {
+
+	/**
+	 * Main sidebar.
+	 */
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'designces-core' ),
@@ -131,7 +135,53 @@ function designces_core_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	/**
+	 * Footer Column One.
+	 */
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer Column One', 'designces-core' ),
+			'id'            => 'footer-widget-col-one',
+			'description'   => esc_html__( 'Widgets displayed in the first footer column.', 'designces-core' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="title">',
+			'after_title'   => '</h3>',
+		)
+	);
+
+	/**
+	 * Footer Column Two.
+	 */
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer Column Two', 'designces-core' ),
+			'id'            => 'footer-widget-col-two',
+			'description'   => esc_html__( 'Widgets displayed in the second footer column.', 'designces-core' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="title">',
+			'after_title'   => '</h3>',
+		)
+	);
+
+	/**
+	 * Footer Column Three.
+	 */
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer Column Three', 'designces-core' ),
+			'id'            => 'footer-widget-col-three',
+			'description'   => esc_html__( 'Widgets displayed in the third footer column.', 'designces-core' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="title">',
+			'after_title'   => '</h3>',
+		)
+	);
 }
+
 add_action( 'widgets_init', 'designces_core_widgets_init' );
 
 /**
