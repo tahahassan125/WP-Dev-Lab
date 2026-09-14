@@ -246,3 +246,151 @@ Is tarah enqueue.php future mein read karte waqt source → purpose → relation
 ###  WooCommerce ka built-in [products] shortcode hai.
 
  https://woocommerce.com/document/woocommerce-shortcodes/products/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ # Designces Core
+
+A custom WordPress theme developed for Designces.
+
+Designces Core is based on the Underscores (`_s`) starter theme and
+has been progressively customized and structured around a reusable,
+component-based WordPress architecture.
+
+The visual direction of the theme follows the PawsGang reference
+design while the implementation is adapted for Designces using
+modern WordPress, WooCommerce, Bootstrap, and custom theme code.
+
+---
+
+# Project Foundation
+
+## Base Theme
+
+**Underscores (`_s`)**
+
+The initial theme structure and several core WordPress template files
+were provided by the Underscores starter theme.
+
+Original `_s` files have been retained where they provide useful
+WordPress functionality and compatibility.
+
+They may be adapted when required by Designces Core.
+
+---
+
+# Theme Architecture
+
+The theme follows a meaningful component-based architecture.
+
+The goal is to keep the code:
+
+- Clean
+- Reusable
+- Maintainable
+- Easy to understand
+- Easy to locate
+- Compatible with WordPress conventions
+
+Components are created for meaningful sections or responsibilities,
+not for every individual HTML element or `<div>`.
+
+---
+
+# Main Directory Structure
+
+```text
+designces-core/
+│
+├── assets/
+│   ├── css/
+│   │   ├── bootstrap-5.3.8/
+│   │   ├── main.scss
+│   │   ├── main.css
+│   │   └── main.css.map
+│   │
+│   ├── icons/
+│   │   └── bootstrap-icons-1.13.1/
+│   │
+│   ├── images/
+│   │   ├── categories/
+│   │   ├── slider/
+│   │   └── payment-methods.png
+│   │
+│   └── js/
+│       └── script.js
+│
+├── inc/
+│   ├── README.md
+│   ├── custom-header.php
+│   ├── customizer.php
+│   ├── enqueue.php
+│   ├── jetpack.php
+│   ├── template-functions.php
+│   ├── template-tags.php
+│   └── woocommerce.php
+│
+├── js/
+│   └── navigation.js
+│
+├── languages/
+│
+├── template-parts/
+│   ├── README.md
+│   │
+│   ├── footer/
+│   │   ├── footer-bottom.php
+│   │   └── footer-widgets.php
+│   │
+│   ├── front-page/
+│   │   ├── categories.php
+│   │   ├── hero-carousel.php
+│   │   ├── popular-products.php
+│   │   └── special-offers.php
+│   │
+│   ├── header/
+│   │   ├── announcement-bar.php
+│   │   ├── main-header.php
+│   │   └── navigation.php
+│   │
+│   ├── content-none.php
+│   ├── content-page.php
+│   ├── content-search.php
+│   └── content.php
+│
+├── 404.php
+├── archive.php
+├── comments.php
+├── composer.json
+├── footer.php
+├── front-page.php
+├── functions.php
+├── header-original.php
+├── header.php
+├── index.php
+├── page.php
+├── package.json
+├── search.php
+├── sidebar.php
+├── single.php
+├── style.css
+├── style-rtl.css
+├── woocommerce.css
+├── screenshot.png
+└── README.md
