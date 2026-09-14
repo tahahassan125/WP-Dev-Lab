@@ -61,8 +61,9 @@ cmd //c mklink /J "C:\Users\ONLINE\Local Sites\designces-dev\app\public\wp-conte
 
 ### Plugins i installed 
 
-woocommerce  (but prducts mainay filhaal sample-data folder sai products import kiay thay -- C:\Users\Taha\Local Sites\designces-dev\app\public\wp-content\plugins\woocommerce\sample-data )
-advanced woo search
+1. woocommerce  (but prducts mainay filhaal sample-data folder sai products import kiay thay -- C:\Users\Taha\Local Sites\designces-dev\app\public\wp-content\plugins\woocommerce\sample-data )
+2. advanced woo search
+3. WP SVG Images   --  for logo
 
 
 
@@ -212,6 +213,10 @@ WC()->cart
 
 #### Humne guard rakha:
 if ( function_exists( 'WC' ) && WC()->cart ) :
+
+
+
+
 
 
 ### Pehle existing _s WooCommerce implementation ko samjhenge
