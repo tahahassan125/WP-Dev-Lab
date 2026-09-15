@@ -396,3 +396,16 @@ designces-core/
 ├── woocommerce.css
 ├── screenshot.png
 └── README.md
+
+
+
+
+### Aur agar future mein SCSS bohat bara ho jaye to tab partials mein split karenge:
+
+assets/css/
+├── main.scss
+└── scss/
+    ├── _header.scss
+    ├── _footer.scss
+    ├── _front-page.scss
+    └── _woocommerce.scss
