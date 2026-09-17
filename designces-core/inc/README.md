@@ -60,8 +60,7 @@ custom-header.php
     ↓
 Custom Header functionality
 
-
-
+```
 ## `customizer.php`
 
 **Origin:** Underscores (_s)
