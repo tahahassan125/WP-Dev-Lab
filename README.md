@@ -409,3 +409,23 @@ assets/css/
     ├── _footer.scss
     ├── _front-page.scss
     └── _woocommerce.scss
+
+
+
+
+
+
+### woocommerce related
+
+Lekin 2026 mein hum kya karenge?
+
+Yahan official WooCommerce documentation hamari approach ko support karti hai.
+
+WooCommerce ke current classic-theme docs ke mutabiq:
+
+WooCommerce ki default CSS assets/css/woocommerce.css se aati hai.
+WooCommerce khud recommend karta hai ke in core CSS files ko directly modify na karein.
+Agar sirf styling changes chahiye hon, to theme stylesheet mein overriding styles add karein.
+Agar major custom styling karni ho to default WooCommerce stylesheet completely disable karke apna CSS system banana bhi possible hai.
+
+Yani reference ka lecture humein concept deta hai, lekin hum us concept ko modern architecture mein implement karenge.
