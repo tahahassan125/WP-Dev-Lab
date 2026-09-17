@@ -10,9 +10,9 @@ The `inc/` directory is mainly responsible for theme-level functionality and int
 
 Files in this directory come from two sources.
 
-### 1. Underscores (_s)
+### 1. Underscores (\_s)
 
-The following files were included with the original Underscores (_s) starter theme:
+The following files were included with the original Underscores (\_s) starter theme:
 
 - `custom-header.php`
 - `customizer.php`
@@ -41,7 +41,7 @@ The following describes the current responsibility and general flow of each file
 
 ## `custom-header.php`
 
-**Origin:** Underscores (_s)
+**Origin:** Underscores (\_s)
 
 Handles WordPress Custom Header functionality.
 
@@ -61,9 +61,10 @@ custom-header.php
 Custom Header functionality
 
 
+
 ## `customizer.php`
 
-Origin: Underscores (_s)
+**Origin:** Underscores (_s)
 
 Handles WordPress Customizer functionality.
 
@@ -71,7 +72,8 @@ Handles WordPress Customizer functionality.
 Registers Customizer settings and controls.
 Provides the existing _s Customizer implementation.
 Can be extended when Designces Core requires theme-admin customization options.
-Flow
+
+### Flow
 
 WordPress Customizer
     ↓
@@ -80,3 +82,4 @@ customizer.php
 Theme settings / controls
     ↓
 Theme output
+```
