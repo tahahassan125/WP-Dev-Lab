@@ -429,3 +429,131 @@ Agar sirf styling changes chahiye hon, to theme stylesheet mein overriding style
 Agar major custom styling karni ho to default WooCommerce stylesheet completely disable karke apna CSS system banana bhi possible hai.
 
 Yani reference ka lecture humein concept deta hai, lekin hum us concept ko modern architecture mein implement karenge.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bilkul 👍 Ab next step Product Card se start karte hain.
+
+Aap mujhe reference se sirf ye 3 cheezen share karein:
+
+1. Product Card ka screenshot 📸
+
+Aisa screenshot jisme ek complete product card clearly visible ho:
+
+Product image
+Sale badge
+Product title
+Regular/old price
+Sale price
+Add to Cart button
+Card ke around spacing
+
+Agar possible ho to 4-product row wala screenshot bhi share karein, taake card ke saath column/grid spacing bhi accurately dekh saken.
+
+2. Reference woocommerce/loop/ files
+
+Aapke reference mein ye folder tha:
+
+woocommerce/
+└── loop/
+    ├── add-to-cart.php
+    ├── loop-end.php
+    ├── loop-start.php
+    ├── no-products-found.php
+    ├── orderby.php
+    ├── pagination.php
+    ├── price.php
+    ├── rating.php
+    ├── result-count.php
+    └── sale-flash.php
+
+Abhi in sab ka code ek saath share karne ki zaroorat nahi.
+
+Pehle ye 4 files ka code share karein:
+
+woocommerce/loop/
+├── add-to-cart.php
+├── price.php
+├── sale-flash.php
+└── loop-start.php
+
+Ye humein product card ke actual reference markup ko samajhne mein sabse zyada help karengi.
+
+3. Reference content-product.php
+
+Agar reference mein ye file hai:
+
+woocommerce/content-product.php
+
+to iska complete code bhi share karein.
+
+Ye especially important hai kyun ke WooCommerce ka product loop normally isi template ke through product card ki overall structure generate karta hai.
+
+Phir hum exactly ye flow follow karenge
+REFERENCE
+   ↓
+HTML structure identify
+   ↓
+WooCommerce data identify
+   ↓
+Decide kya custom hai / kya WooCommerce ka hai
+   ↓
+Designces product-card.php
+   ↓
+main.scss styling
+   ↓
+Popular Products
+   ↓
+Special Offers
+
+Aur reference ki files ko blindly copy nahi karenge. Hum unko reference/learning ke taur par use karke apni clean Designces implementation banayenge.
+
+Pehla share: screenshot + content-product.php + upar wali 4 loop files.

@@ -156,6 +156,14 @@ $utilities: (
 			background-color: $primary;
 		}
 	}
+
+	.menu-item-has-children > a::after {
+		font-family: "bootstrap-icons";
+		content: "\f282";
+		margin-left: 0.4rem;
+		font-size: 0.75em;
+		display: inline-block;
+	}
 }
 
 /************** FRONT PAGE **************/
