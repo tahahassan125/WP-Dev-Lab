@@ -1,67 +1,94 @@
 <?php
+
 /**
  * Reusable WooCommerce product card.
  *
- * Expected:
- * $args['product'] = WC_Product object
- *
  * @package Designces_Core
+ *
+ * @var WC_Product|null $card_product
  */
 
-$product = isset( $args['product'] ) ? $args['product'] : $GLOBALS['product'];
+$card_product = $args['product'] ?? null;
 
-if ( ! $product instanceof WC_Product ) {
+if (! $card_product instanceof WC_Product) {
 	return;
 }
+
+$product_id = $card_product->get_id();
 ?>
 
-<article <?php wc_product_class( 'product-card', $product ); ?>>
+<article <?php wc_product_class( 'col-12 col-md-6 col-lg-4 product-card', $card_product ); ?>>
 
-	<div class="product-card__image">
+	<div class="product-card__image-wrap">
+
+		<?php if ($card_product->is_on_sale()) : ?>
+
+			<span class="product-card__badge">
+				<?php esc_html_e('Sale!', 'designces-core'); ?>
+			</span>
+
+		<?php endif; ?>
 
 		<a
+			href="<?php echo esc_url(get_permalink($product_id)); ?>"
 			class="product-card__image-link"
-			href="<?php echo esc_url( $product->get_permalink() ); ?>"
-		>
+			aria-label="<?php echo esc_attr($card_product->get_name()); ?>">
 			<?php
-			echo $product->get_image(
-				'woocommerce_thumbnail',
-				array(
-					'class' => 'product-card__image-img',
+			echo wp_kses_post(
+				$card_product->get_image(
+					'woocommerce_thumbnail',
+					array(
+						'class' => 'product-card__image',
+					)
 				)
 			);
 			?>
-
-			<?php if ( $product->is_on_sale() ) : ?>
-				<span class="product-card__sale">
-					<?php esc_html_e( 'Sale!', 'designces-core' ); ?>
-				</span>
-			<?php endif; ?>
 		</a>
 
 	</div>
 
-	<div class="product-card__content">
+	<div class="product-card__body">
 
-		<h2 class="product-card__title">
-			<a href="<?php echo esc_url( $product->get_permalink() ); ?>">
-				<?php echo esc_html( $product->get_name() ); ?>
+		<h3 class="product-card__title">
+			<a href="<?php echo esc_url(get_permalink($product_id)); ?>">
+				<?php echo esc_html($card_product->get_name()); ?>
 			</a>
-		</h2>
+		</h3>
 
 		<div class="product-card__price">
-			<?php echo wp_kses_post( $product->get_price_html() ); ?>
+			<?php echo wp_kses_post($card_product->get_price_html()); ?>
 		</div>
 
-		<div class="product-card__actions">
-			<?php
-			woocommerce_template_loop_add_to_cart(
-				array(
-					'product' => $product,
-				)
-			);
-			?>
-		</div>
+		<?php if ($card_product->is_type('simple') && $card_product->is_purchasable() && $card_product->is_in_stock()) : ?>
+
+			<a
+				href="<?php echo esc_url($card_product->add_to_cart_url()); ?>"
+				data-quantity="1"
+				class="product-card__button add_to_cart_button ajax_add_to_cart"
+				data-product_id="<?php echo esc_attr($product_id); ?>"
+				data-product_sku="<?php echo esc_attr($card_product->get_sku()); ?>"
+				aria-label="<?php echo esc_attr($card_product->add_to_cart_description()); ?>"
+				rel="nofollow">
+				<span>
+					<?php esc_html_e('Add to cart', 'designces-core'); ?>
+				</span>
+
+				<i class="bi bi-arrow-right" aria-hidden="true"></i>
+			</a>
+
+		<?php else : ?>
+
+			<a
+				href="<?php echo esc_url(get_permalink($product_id)); ?>"
+				class="product-card__button">
+				<span>
+					<?php echo esc_html($card_product->add_to_cart_text()); ?>
+				</span>
+
+				<i class="bi bi-arrow-right" aria-hidden="true"></i>
+			</a>
+
+		<?php endif; ?>
 
 	</div>
 

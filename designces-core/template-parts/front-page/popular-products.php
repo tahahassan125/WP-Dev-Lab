@@ -15,15 +15,35 @@
 		your pets healthy and spoiled!
 	</p>
 
-	<div class="pt-5 pb-5">
+	<div class="row pt-5 pb-5 popular-products__grid">
 
-		<?php echo do_shortcode( '[products popularity columns=4 limit=4]' ); ?>
+		<?php
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			$popular_products = wc_get_products(
+				array(
+					'limit'   => 3,
+					'status'  => 'publish',
+					'orderby' => 'popularity',
+					'order'   => 'DESC',
+					'return'  => 'objects',
+				)
+			);
+
+			foreach ( $popular_products as $product ) {
+
+				get_template_part(
+					'template-parts/products/product-card',
+					null,
+					array(
+						'product' => $product,
+					)
+				);
+
+			}
+		}
+		?>
 
 	</div>
 
-</section>
-
-
-<section class="container pt-5" style="padding-top: 400px">
-sdf
 </section>
