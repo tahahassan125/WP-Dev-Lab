@@ -557,3 +557,19 @@ Special Offers
 Aur reference ki files ko blindly copy nahi karenge. Hum unko reference/learning ke taur par use karke apni clean Designces implementation banayenge.
 
 Pehla share: screenshot + content-product.php + upar wali 4 loop files.
+
+
+
+
+
+
+Product card related
+
+Simple product
+→ Add to cart
+
+Variable product
+→ Select options
+
+External product
+→ External product

@@ -11785,7 +11785,72 @@ textarea.form-control-lg {
   overflow: hidden;
 }
 
+/* =========================================================
+   Popular Products
+   ---------------------------------------------------------
+   Section-level layout for the Popular Products component.
+   The product cards themselves are styled separately below.
+   ========================================================= */
+.popular-products {
+  /*
+   * Product grid.
+   *
+   * Desktop: 3 cards
+   * Tablet:  2 cards
+   * Mobile:  1 card
+   */
+}
+.popular-products__grid {
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.popular-products {
+  /*
+   * Product card width is controlled by the CSS Grid above.
+   * Reset the Bootstrap column width/margin because the
+   * product card is already a grid item.
+   */
+}
+.popular-products .product-card {
+  width: auto;
+  margin: 0;
+}
+.popular-products {
+  /*
+   * Tablet layout.
+   */
+}
+@media (max-width: 991.98px) {
+  .popular-products__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.popular-products {
+  /*
+   * Mobile layout.
+   */
+}
+@media (max-width: 767.98px) {
+  .popular-products__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   Product Card
+   ---------------------------------------------------------
+   Reusable WooCommerce product-card component.
+   Product data comes from WooCommerce; these styles only
+   control the visual presentation.
+   ========================================================= */
 .product-card {
+  /*
+   * Main card container.
+   */
   position: relative;
   margin-bottom: 1.5rem;
   padding: 0;
@@ -11793,18 +11858,44 @@ textarea.form-control-lg {
   border-radius: 1.4rem;
   background-color: #fff;
   overflow: hidden;
+  /*
+   * Product image area.
+   *
+   * The wrapper is positioned relatively so the sale badge
+   * can be positioned over the image.
+   */
 }
 .product-card__image-wrap {
   position: relative;
   overflow: hidden;
 }
+.product-card {
+  /*
+   * Image link fills the available image area.
+   */
+}
 .product-card__image-link {
   display: block;
+}
+.product-card {
+  /*
+   * WooCommerce product image.
+   *
+   * Height remains automatic for now because products may
+   * have different image compositions/aspect ratios.
+   */
 }
 .product-card__image {
   display: block;
   width: 100%;
   height: auto;
+}
+.product-card {
+  /*
+   * Sale badge.
+   *
+   * Positioned inside the top-left corner of the image.
+   */
 }
 .product-card__badge {
   position: absolute;
@@ -11822,9 +11913,19 @@ textarea.form-control-lg {
   font-weight: 700;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+.product-card {
+  /*
+   * Product information area.
+   */
+}
 .product-card__body {
   padding: 1.25rem 1.25rem 1.4rem;
   text-align: center;
+}
+.product-card {
+  /*
+   * Product title.
+   */
 }
 .product-card__title {
   margin: 0 0 0.75rem;
@@ -11838,6 +11939,15 @@ textarea.form-control-lg {
 .product-card__title a:hover {
   color: rgb(127, 24, 127);
 }
+.product-card {
+  /*
+   * Product price.
+   *
+   * WooCommerce generates regular/sale price markup:
+   * <del>...</del>
+   * <ins>...</ins>
+   */
+}
 .product-card__price {
   margin-bottom: 1.25rem;
   font-size: 1rem;
@@ -11847,9 +11957,20 @@ textarea.form-control-lg {
   color: #777;
 }
 .product-card__price ins {
-  color: #dc4b25;
+  color: rgb(127, 24, 127);
   font-weight: 700;
   text-decoration: none;
+}
+.product-card {
+  /*
+   * Product action button.
+   *
+   * Uses the Designces Core theme primary color instead
+   * of a hardcoded reference-site button color.
+   *
+   * Current visual label:
+   * "Add to cart →"
+   */
 }
 .product-card__button {
   display: flex;
@@ -11860,15 +11981,45 @@ textarea.form-control-lg {
   padding: 0.8rem 1rem;
   border-radius: 999px;
   background-color: rgb(127, 24, 127);
-  color: #fff;
+  color: #fff !important;
   font-weight: 700;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: opacity 0.2s ease;
 }
 .product-card__button:hover {
+  background-color: rgb(127, 24, 127);
+  color: #fff !important;
   opacity: 0.9;
-  color: #fff;
 }
 .product-card__button i {
   font-size: 1rem;
+}
+
+/* =========================================================
+   Special Offers
+   ---------------------------------------------------------
+   Section-level layout for sale products.
+   Reuses the shared product-card component.
+   ========================================================= */
+.special-offers__grid {
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.special-offers .product-card {
+  width: auto;
+  margin: 0;
+}
+@media (max-width: 991.98px) {
+  .special-offers__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767.98px) {
+  .special-offers__grid {
+    grid-template-columns: 1fr;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -7,7 +7,7 @@
  */
 ?>
 
-<section class="container pb-5 pt-4">
+<section class="container-fluid pb-5 pt-4">
 
     <div
         id="heroCarousel"
