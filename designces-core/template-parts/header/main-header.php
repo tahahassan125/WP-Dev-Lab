@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Main header.
  *
@@ -12,10 +13,23 @@
 
 		<div class="row align-items-center">
 
-			<!-- Logo -->
+			<!-- Logo / Site Identity -->
 			<div class="col d-flex justify-content-center justify-content-md-start site-header__logo">
 
-				<?php the_custom_logo(); ?>
+				<?php
+				if (has_custom_logo()) :
+					the_custom_logo();
+				else :
+				?>
+					<a
+						class="site-header__site-title"
+						href="<?php echo esc_url(home_url('/')); ?>"
+						rel="home">
+						<?php bloginfo('name'); ?>
+					</a>
+				<?php
+				endif;
+				?>
 
 			</div>
 
@@ -24,7 +38,7 @@
 			<div class="col-sm-12 col-md-5 site-header__search">
 
 				<?php
-				if ( function_exists( 'aws_get_search_form' ) ) {
+				if (function_exists('aws_get_search_form')) {
 					aws_get_search_form();
 				}
 				?>
@@ -35,21 +49,19 @@
 			<!-- Cart -->
 			<div class="col site-header__cart d-flex justify-content-center justify-content-md-end align-items-center pt-2">
 
-				<?php if ( function_exists( 'WC' ) && WC()->cart ) : ?>
+				<?php if (function_exists('WC') && WC()->cart) : ?>
 
 					<a
 						class="site-header__cart-icon"
-						href="<?php echo esc_url( wc_get_cart_url() ); ?>"
-						aria-label="<?php esc_attr_e( 'View shopping cart', 'designces-core' ); ?>"
-					>
-						<i class="bi bi-bag-dash p-2" aria-hidden="true"></i>
+						href="<?php echo esc_url(wc_get_cart_url()); ?>"
+						aria-label="<?php esc_attr_e('View shopping cart', 'designces-core'); ?>">
+						<i class="bi bi-bag-dash" aria-hidden="true"></i> <!-- p-2-->
 					</a>
 
 					<a
 						class="site-header__cart-summary"
-						href="<?php echo esc_url( wc_get_cart_url() ); ?>"
-						title="<?php esc_attr_e( 'View your shopping cart', 'designces-core' ); ?>"
-					>
+						href="<?php echo esc_url(wc_get_cart_url()); ?>"
+						title="<?php esc_attr_e('View your shopping cart', 'designces-core'); ?>">
 						<?php
 						printf(
 							/* translators: 1: number of items, 2: cart total. */

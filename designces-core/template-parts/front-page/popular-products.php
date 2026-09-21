@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="container pt-5 popular-products">
+<section class="container popular-products">
 
 	<h1 class="text-center pt-5">Popular Products</h1>
 

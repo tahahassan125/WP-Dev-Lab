@@ -14,17 +14,18 @@
 
 <footer id="colophon" class="site-footer">
 
-		<?php
-		get_template_part( 'template-parts/footer/footer', 'widgets' );
+	<?php
+	get_template_part('template-parts/footer/footer', 'widgets');
 
-		get_template_part( 'template-parts/footer/footer', 'bottom' );
-		?>
+	get_template_part('template-parts/footer/footer', 'bottom');
+	?>
 
-	</footer><!-- #colophon -->
+</footer><!-- #colophon -->
 
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
 
 </body>
+
 </html>

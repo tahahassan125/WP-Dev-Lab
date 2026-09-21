@@ -1,0 +1,152 @@
+/************** HEADER **************/
+
+/* Announcement Bar */
+
+.announcement-bar {
+	font-size: 0.8rem;
+	border-bottom: 1px solid var(--bs-gray);
+
+	&__contacts,
+	&__benefits {
+		padding: 0;
+		margin: 0 -10px;
+		list-style-type: none;
+		display: inline-flex;
+	}
+
+	&__item {
+		margin: 0 10px;
+		display: flex;
+		align-items: center;
+	}
+
+	&__icon {
+		background-color: var(--bs-icon-background);
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 30px;
+		height: 30px;
+		margin-right: 6px;
+	}
+
+	&__link {
+		// No custom styling yet. because  HTML mein already Bootstrap text-decoration: none; hai
+		// But // Future custom link styling.
+
+		//font-weight: 600;
+		//transition: color 0.2s ease;
+
+	}
+
+	@include media-breakpoint-down(lg) {
+		display: none;
+	}
+}
+
+
+/* Main Header */
+
+.site-header {
+
+	&__site-title {
+		color: $primary;
+		font-family: $headings-font-family;
+		font-size: 1.5rem;
+		font-weight: 800;
+		text-decoration: none;
+
+		&:hover {
+			color: $primary;
+			text-decoration: none;
+		}
+	}
+
+	&__search {
+
+		.aws-search-field {
+			font-size: 0.9rem;
+			padding-left: 1.4rem;
+			border-radius: 20px !important;
+		}
+	}
+
+
+	&__cart {
+
+		&-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 0.35rem;
+			color: $primary;
+			text-decoration: none;
+
+			&:hover {
+				color: $primary;
+			}
+
+			.bi {
+				font-size: 1.1rem;
+				line-height: 1;
+			}
+		}
+
+		&-summary {
+			color: $primary;
+			font-size: 0.9rem;
+			line-height: 1;
+			text-decoration: none;
+
+			&:hover {
+				color: $primary;
+				text-decoration: none;  
+			}
+		}
+	}
+
+
+}
+
+
+/* Main Navigation */
+
+.main-navigation {
+	font-weight: 600;
+
+	.current-menu-item {
+		background-color: rgb(149, 33, 149);
+	}
+
+	a {
+		text-transform: uppercase;
+		color: var(--bs-white);
+		padding: 0.6rem 1.4rem;
+
+		&:hover {
+			background-color: rgb(149, 33, 149);
+		}
+	}
+
+	.menu-toggle {
+		background-color: $primary;
+		color: $white;
+		border: none;
+	}
+
+	.sub-menu {
+		li {
+			background-color: $primary;
+		}
+	}
+
+	.menu-item-has-children>a::after {
+		font-family: "bootstrap-icons";
+		content: "\f282";
+		margin-left: 0.4rem;
+		font-size: 0.75em;
+		display: inline-block;
+	}
+}
+
+// Header component styles. 

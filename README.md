@@ -573,3 +573,50 @@ Variable product
 
 External product
 → External product
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Jee, pehle browser ke built-in Inspect → Device Toolbar ko use karein. 👍
+
+Aap Chrome use kar rahe hain, is liye:
+
+Right click → Inspect → Toggle device toolbar
+Shortcut:
+
+Ctrl + Shift + M
+Ye pehle kyun?
+
+Hamari current requirement responsive CSS develop karna hai, aur Chrome DevTools is ka best starting point hai because:
+
+exact viewport width/height set kar sakte hain
+Bootstrap breakpoints easily test ho jate hain
+CSS changes immediately inspect kar sakte hain
+media queries dekh sakte hain
+different devices simulate kar sakte hain
+console/errors bhi saath monitor hote hain
+
+Aap initially ye widths test karein:
+
+Test	Width
+Desktop	1440px
+Tablet	992px
+Tablet	768px
+Mobile	576px
+Mobile	390px
+Small mobile	360px

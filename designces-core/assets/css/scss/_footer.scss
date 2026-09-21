@@ -1,0 +1,34 @@
+
+/* =========================================================
+   Footer
+   ---------------------------------------------------------
+   Shared styling for footer content and WordPress menu
+   widgets.
+   ========================================================= */
+
+.site-footer {
+
+	/*
+	 * Footer navigation/menu widgets.
+	 *
+	 * WordPress menu widgets output a `.menu` list.
+	 * Reset the default list styling and style the links
+	 * for the purple footer background.
+	 */
+	.menu {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+
+		a {
+			display: block;
+			padding: 0.3rem 0;
+			color: $white;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

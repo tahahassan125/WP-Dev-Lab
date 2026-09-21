@@ -7,11 +7,11 @@
  */
 ?>
 
-<section class="container-fluid px-0 pb-5">
+<section class="container pb-5 pt-4">
 
     <div
         id="heroCarousel"
-        class="carousel carousel-dark slide overflow-hidden"
+        class="carousel carousel-dark slide overflow-hidden rounded"
         data-bs-ride="carousel">
 
         <div class="carousel-indicators">
