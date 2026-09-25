@@ -11744,6 +11744,17 @@ textarea.form-control-lg {
   color: rgb(127, 24, 127);
   text-decoration: none;
 }
+@media (max-width: 767.98px) {
+  .site-header__logo {
+    justify-content: flex-start !important;
+  }
+  .site-header__search {
+    display: none;
+  }
+  .site-header__cart {
+    justify-content: flex-end !important;
+  }
+}
 
 /* Main Navigation */
 .main-navigation {

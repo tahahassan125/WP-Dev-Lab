@@ -3,6 +3,9 @@
 /* Announcement Bar */
 
 .announcement-bar {
+	// Desktop/default styles
+
+
 	font-size: 0.8rem;
 	border-bottom: 1px solid var(--bs-gray);
 
@@ -39,15 +42,23 @@
 
 	}
 
+	// Tablet/mobile: hidden below 992px.
 	@include media-breakpoint-down(lg) {
 		display: none;
 	}
+
+	// Future: tablet/mobile improvements can be added here if needed.
+
+
 }
 
 
 /* Main Header */
 
 .site-header {
+
+
+	// Desktop / default
 
 	&__site-title {
 		color: $primary;
@@ -100,9 +111,28 @@
 
 			&:hover {
 				color: $primary;
-				text-decoration: none;  
+				text-decoration: none;
 			}
 		}
+	}
+
+
+	// Mobile
+
+	@include media-breakpoint-down(md) {
+
+		&__logo {
+			justify-content: flex-start !important;
+		}
+
+		&__search {
+			display: none;
+		}
+
+		&__cart {
+		justify-content: flex-end !important;
+	}
+
 	}
 
 
@@ -149,4 +179,3 @@
 	}
 }
 
-// Header component styles. 
