@@ -33,14 +33,7 @@
 		margin-right: 6px;
 	}
 
-	&__link {
-		// No custom styling yet. because  HTML mein already Bootstrap text-decoration: none; hai
-		// But // Future custom link styling.
-
-		//font-weight: 600;
-		//transition: color 0.2s ease;
-
-	}
+	
 
 	// Tablet/mobile: hidden below 992px.
 	@include media-breakpoint-down(lg) {
@@ -53,13 +46,17 @@
 }
 
 
-/* Main Header */
+/* =========================================================
+   MAIN HEADER
+   ========================================================= */
 
 .site-header {
 
+	// ========================================
+	// DESKTOP / DEFAULT
+	// ========================================
 
-	// Desktop / default
-
+	// Site identity / title.
 	&__site-title {
 		color: $primary;
 		font-family: $headings-font-family;
@@ -73,6 +70,7 @@
 		}
 	}
 
+	// Search form.
 	&__search {
 
 		.aws-search-field {
@@ -82,7 +80,7 @@
 		}
 	}
 
-
+	// Shopping cart.
 	&__cart {
 
 		&-icon {
@@ -116,33 +114,72 @@
 		}
 	}
 
+	// Mobile navigation toggle.
+	// Hidden on desktop by default.
+	
+	&__menu-toggle {
+		display: none;
+	}
 
-	// Mobile
+
+	// ========================================
+	// MOBILE
+	// ========================================
 
 	@include media-breakpoint-down(md) {
 
+		// Logo moves to the left.
 		&__logo {
 			justify-content: flex-start !important;
 		}
 
+		// Search is hidden on mobile.
 		&__search {
 			display: none;
 		}
 
+		// Cart stays toward the right side.
 		&__cart {
-		justify-content: flex-end !important;
+			justify-content: flex-end !important;
+		}
+
+		// Show the mobile navigation toggle.
+		&__menu-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-top: 0.5rem;
+		}
+
+		// Actual hamburger button.
+		.menu-toggle {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			border: 0;
+			background: transparent;
+			color: $primary;
+			font-size: 1.5rem;
+			line-height: 1;
+		}
 	}
-
-	}
-
-
 }
 
 
-/* Main Navigation */
+
+
+/* =========================================================
+   MAIN NAVIGATION
+   ========================================================= */
 
 .main-navigation {
+
 	font-weight: 600;
+
+	// ========================================
+	// NAVIGATION LINKS
+	// ========================================
 
 	.current-menu-item {
 		background-color: rgb(149, 33, 149);
@@ -158,13 +195,8 @@
 		}
 	}
 
-	.menu-toggle {
-		background-color: $primary;
-		color: $white;
-		border: none;
-	}
-
 	.sub-menu {
+
 		li {
 			background-color: $primary;
 		}
@@ -177,5 +209,152 @@
 		font-size: 0.75em;
 		display: inline-block;
 	}
-}
 
+	// ========================================
+	// MOBILE
+	// Bootstrap Responsive Offcanvas
+	// ========================================
+	//
+	// Below 768px:
+	// - Navigation becomes a left-side Offcanvas.
+	// - Bootstrap handles opening/closing, backdrop,
+	//   animation, ESC key, etc.
+	// - WordPress Admin Bar is taken into account
+	//   when the user is logged in.
+	// ========================================
+
+	@include media-breakpoint-down(md) {
+
+		// ----------------------------------------
+		// Offcanvas positioning
+		// ----------------------------------------
+		//
+		// Bootstrap normally starts the Offcanvas
+		// at the top of the viewport.
+		//
+		// When logged into WordPress, the Admin Bar
+		// occupies space at the top of the viewport.
+		//
+		// WordPress provides:
+		// --wp-admin--admin-bar--height
+		//
+		// Fallback is 0px for normal visitors who
+		// do not have the Admin Bar.
+		// ----------------------------------------
+
+		&.offcanvas-start {
+			top: var(--wp-admin--admin-bar--height, 0px);
+		}
+
+		// ----------------------------------------
+		// Offcanvas Header
+		// ----------------------------------------
+
+		.offcanvas-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			padding: 1rem;
+		}
+
+		// ----------------------------------------
+		// Offcanvas Title
+		// ----------------------------------------
+
+		.offcanvas-title {
+			margin: 0;
+			color: $white;
+			font-family: $headings-font-family;
+			font-size: 1.25rem;
+			font-weight: 800;
+		}
+
+		// ----------------------------------------
+		// Offcanvas Close Button
+		// ----------------------------------------
+		//
+		// Bootstrap's default close icon is dark.
+		// Our navigation background is purple,
+		// therefore make the icon white.
+		// ----------------------------------------
+
+		.btn-close {
+			filter: invert(1) grayscale(100%) brightness(200%);
+			opacity: 1;
+		}
+
+		// ----------------------------------------
+		// Offcanvas Body
+		// ----------------------------------------
+
+		.offcanvas-body {
+			padding: 0;
+		}
+
+		// ----------------------------------------
+		// Navigation Container
+		// ----------------------------------------
+		//
+		// Bootstrap's normal .container has width,
+		// max-width and horizontal padding.
+		//
+		// Inside the mobile Offcanvas we want the
+		// menu to use the complete panel width.
+		// ----------------------------------------
+
+		.container {
+			display: block !important;
+			width: 100%;
+			max-width: none;
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		.row {
+			width: 100%;
+			margin-right: 0;
+			margin-left: 0;
+		}
+
+		.col-12 {
+			width: 100%;
+			padding-right: 0;
+			padding-left: 0;
+			text-align: left !important;
+		}
+
+		// ----------------------------------------
+		// WordPress Menu
+		// ----------------------------------------
+
+		ul {
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		a {
+			text-align: left;
+		}
+	}
+
+	// ========================================
+	// DESKTOP
+	// Normal horizontal navigation
+	// ========================================
+	//
+	// 768px and above:
+	// - Offcanvas responsive behavior is disabled
+	//   by Bootstrap's .offcanvas-md.
+	// - Navigation becomes a normal horizontal menu.
+	// ========================================
+
+	@include media-breakpoint-up(md) {
+
+		ul {
+			display: flex;
+		}
+	}
+}

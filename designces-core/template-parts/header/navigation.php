@@ -1,45 +1,53 @@
 <?php
+
 /**
  * Primary navigation.
+ *
+ * Uses Bootstrap responsive Offcanvas on mobile
+ * and a normal horizontal navigation on desktop.
  *
  * @package Designces_Core
  */
 ?>
 
-<nav id="site-navigation" class="main-navigation bg-primary">
+<nav id="site-navigation" class="main-navigation bg-primary offcanvas-md offcanvas-start" tabindex="-1" aria-labelledby="site-navigation-title">
 
-	<div class="container d-flex justify-content-center">
+	<!-- Mobile Offcanvas Header -->
+	<div class="offcanvas-header">
 
-		<div class="row">
+		<h2 id="site-navigation-title" class="offcanvas-title">
+			<?php esc_html_e( 'Navigation', 'designces-core' ); ?>
+		</h2>
 
-			<!-- Mobile menu toggle -->
-			<div class="col-12 d-flex justify-content-center">
+		<button
+			type="button"
+			class="btn-close"
+			data-bs-dismiss="offcanvas"
+			data-bs-target="#site-navigation"
+			aria-label="<?php esc_attr_e( 'Close navigation menu', 'designces-core' ); ?>"
+		></button>
 
-				<button
-					class="menu-toggle"
-					aria-controls="primary-menu"
-					aria-expanded="false"
-				>
-					<i class="bi bi-list" aria-hidden="true"></i>
+	</div>
 
-					<?php esc_html_e( 'Primary Menu', 'designces-core' ); ?>
+	<!-- Navigation Content -->
+	<div class="offcanvas-body">
 
-				</button>
+		<div class="container d-flex justify-content-center">
 
-			</div>
+			<div class="row">
 
+				<div class="col-12 text-center">
 
-			<!-- Primary menu -->
-			<div class="col-12 text-center">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+						)
+					);
+					?>
 
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
-					)
-				);
-				?>
+				</div>
 
 			</div>
 

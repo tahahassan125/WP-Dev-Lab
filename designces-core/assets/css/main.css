@@ -11702,7 +11702,9 @@ textarea.form-control-lg {
   }
 }
 
-/* Main Header */
+/* =========================================================
+   MAIN HEADER
+   ========================================================= */
 .site-header__site-title {
   color: rgb(127, 24, 127);
   font-family: "Nunito", sans-serif;
@@ -11744,6 +11746,9 @@ textarea.form-control-lg {
   color: rgb(127, 24, 127);
   text-decoration: none;
 }
+.site-header__menu-toggle {
+  display: none;
+}
 @media (max-width: 767.98px) {
   .site-header__logo {
     justify-content: flex-start !important;
@@ -11754,9 +11759,28 @@ textarea.form-control-lg {
   .site-header__cart {
     justify-content: flex-end !important;
   }
+  .site-header__menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.5rem;
+  }
+  .site-header .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: rgb(127, 24, 127);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
 }
 
-/* Main Navigation */
+/* =========================================================
+   MAIN NAVIGATION
+   ========================================================= */
 .main-navigation {
   font-weight: 600;
 }
@@ -11771,11 +11795,6 @@ textarea.form-control-lg {
 .main-navigation a:hover {
   background-color: rgb(149, 33, 149);
 }
-.main-navigation .menu-toggle {
-  background-color: rgb(127, 24, 127);
-  color: #fff;
-  border: none;
-}
 .main-navigation .sub-menu li {
   background-color: rgb(127, 24, 127);
 }
@@ -11785,6 +11804,64 @@ textarea.form-control-lg {
   margin-left: 0.4rem;
   font-size: 0.75em;
   display: inline-block;
+}
+@media (max-width: 767.98px) {
+  .main-navigation.offcanvas-start {
+    top: var(--wp-admin--admin-bar--height, 0px);
+  }
+  .main-navigation .offcanvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+  }
+  .main-navigation .offcanvas-title {
+    margin: 0;
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .main-navigation .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 1;
+  }
+  .main-navigation .offcanvas-body {
+    padding: 0;
+  }
+  .main-navigation .container {
+    display: block !important;
+    width: 100%;
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .main-navigation .row {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .main-navigation .col-12 {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: left !important;
+  }
+  .main-navigation ul {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .main-navigation a {
+    text-align: left;
+  }
+}
+@media (min-width: 768px) {
+  .main-navigation ul {
+    display: flex;
+  }
 }
 
 /************** FRONT PAGE **************/

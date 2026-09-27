@@ -13,7 +13,10 @@
 
 		<div class="row align-items-center">
 
-			<!-- Logo / Site Identity -->
+			<!-- =====================================================
+			     Logo / Site Identity
+			     ===================================================== -->
+
 			<div class="col d-flex justify-content-center justify-content-md-start site-header__logo">
 
 				<?php
@@ -34,7 +37,10 @@
 			</div>
 
 
-			<!-- Search -->
+			<!-- =====================================================
+			     Search
+			     ===================================================== -->
+
 			<div class="col-sm-12 col-md-5 site-header__search">
 
 				<?php
@@ -46,7 +52,10 @@
 			</div>
 
 
-			<!-- Cart -->
+			<!-- =====================================================
+			     Shopping Cart
+			     ===================================================== -->
+
 			<div class="col site-header__cart d-flex justify-content-center justify-content-md-end align-items-center pt-2">
 
 				<?php if (function_exists('WC') && WC()->cart) : ?>
@@ -55,7 +64,7 @@
 						class="site-header__cart-icon"
 						href="<?php echo esc_url(wc_get_cart_url()); ?>"
 						aria-label="<?php esc_attr_e('View shopping cart', 'designces-core'); ?>">
-						<i class="bi bi-bag-dash" aria-hidden="true"></i> <!-- p-2-->
+						<i class="bi bi-bag-dash" aria-hidden="true"></i>
 					</a>
 
 					<a
@@ -78,6 +87,26 @@
 					</a>
 
 				<?php endif; ?>
+
+			</div>
+
+
+			<!-- =====================================================
+			     Mobile Navigation Toggle
+			     ===================================================== -->
+
+			<div class="col-auto site-header__menu-toggle">
+
+				<button
+					class="menu-toggle"
+					type="button"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#site-navigation"
+					aria-controls="site-navigation"
+					aria-expanded="false"
+					aria-label="<?php esc_attr_e('Open navigation menu', 'designces-core'); ?>">
+					<i class="bi bi-list" aria-hidden="true"></i>
+				</button>
 
 			</div>
 

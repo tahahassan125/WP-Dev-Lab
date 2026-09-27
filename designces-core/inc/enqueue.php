@@ -77,13 +77,13 @@ function designces_core_enqueue_assets()
 	/**
 	 * Navigation script.
 	 */
-	wp_enqueue_script(
-		'designces-core-navigation',
-		get_template_directory_uri() . '/js/navigation.js',
-		array(),
-		_S_VERSION,
-		true
-	);
+	//wp_enqueue_script(
+	//	'designces-core-navigation',
+	//	get_template_directory_uri() . '/js/navigation.js',
+	//	array(),
+	//	_S_VERSION,
+	//	true
+	//);
 
 	/**
 	 * Bootstrap JavaScript.
