@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="container popular-products">
+<section class="container-fluid popular-products">
 
 	<h1 class="text-center pt-5">Popular Products</h1>
 
@@ -22,7 +22,7 @@
 
 			$popular_products = wc_get_products(
 				array(
-					'limit'   => 3,
+					'limit'   => 6,
 					'status'  => 'publish',
 					'orderby' => 'popularity',
 					'order'   => 'DESC',

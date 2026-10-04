@@ -11,83 +11,127 @@
 	/*
 	 * Main card container.
 	 */
+	
 	position: relative;
 	margin-bottom: 1.5rem;
 	padding: 0;
-	border: 1px solid #e5dfd7;
-	border-radius: 1.4rem;
-	background-color: $white;
-	overflow: hidden;
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
 
 
 	/*
-	 * Product image area.
+	 * Product media area.
 	 *
-	 * The wrapper is positioned relatively so the sale badge
-	 * can be positioned over the image.
+	 * Keeps every product image at the same 4:5 ratio.
 	 */
-	&__image-wrap {
+	&__media {
 		position: relative;
+		width: 100%;
+		aspect-ratio: 4 / 5;
 		overflow: hidden;
+		background-color: #e9eaed;
 	}
 
 
 	/*
-	 * Image link fills the available image area.
+	 * Product image link fills the complete media area.
 	 */
 	&__image-link {
 		display: block;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		text-decoration: none;
 	}
 
 
 	/*
-	 * WooCommerce product image.
-	 *
-	 * Height remains automatic for now because products may
-	 * have different image compositions/aspect ratios.
+	 * Primary and secondary product images.
 	 */
 	&__image {
 		display: block;
 		width: 100%;
-		height: auto;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+
+		transition: opacity 0.3s ease;
+	}
+
+
+	/*
+	 * Secondary image.
+	 *
+	 * Hidden by default and shown on desktop hover.
+	 */
+	&__image--hover {
+		position: absolute;
+		inset: 0;
+		opacity: 0;
+	}
+
+
+	/*
+	 * Product badges container.
+	 */
+	&__badges {
+		position: absolute;
+		top: 0.75rem;
+		left: 0.75rem;
+		z-index: 2;
+
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		pointer-events: none;
+	}
+
+
+	/*
+	 * Individual product badge.
+	 */
+	&__badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		width: fit-content;
+
+		padding: 0.2rem 0.65rem;
+
+		border: 1px solid;
+		border-radius: 999px;
+
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1;
+		white-space: nowrap;
 	}
 
 
 	/*
 	 * Sale badge.
-	 *
-	 * Positioned inside the top-left corner of the image.
 	 */
-	&__badge {
-		position: absolute;
-		top: 1rem;
-		left: 1rem;
-		z-index: 2;
-
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-
-		padding: 0.45rem 0.9rem;
-
-		border-radius: 999px;
-
-		background-color: $white;
-		color: #3f3f3f;
-
-		font-size: 0.8rem;
-		font-weight: 700;
-
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	&__badge--sale {
+		background-color: #fff3b0;
+		border-color: #e5bd00;
+		color: $black;
 	}
 
 
 	/*
 	 * Product information area.
 	 */
-	&__body {
-		padding: 1.25rem 1.25rem 1.4rem;
-		text-align: center;
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+
+		padding: 0.65rem 0.75rem 1rem;
+
+		text-align: left;
 	}
 
 
@@ -95,9 +139,11 @@
 	 * Product title.
 	 */
 	&__title {
-		margin: 0 0 0.75rem;
-		font-size: 1.35rem;
-		font-weight: 800;
+		margin: 0;
+
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.25;
 
 		a {
 			color: $black;
@@ -112,17 +158,20 @@
 
 	/*
 	 * Product price.
-	 *
-	 * WooCommerce generates regular/sale price markup:
-	 * <del>...</del>
-	 * <ins>...</ins>
 	 */
 	&__price {
-		margin-bottom: 1.25rem;
+		margin: 0;
+
 		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.25;
+
+		.price {
+			color: $black;
+		}
 
 		del {
-			margin-right: 0.3rem;
+			margin-right: 0.35rem;
 			color: #777;
 		}
 
@@ -135,41 +184,23 @@
 
 
 	/*
-	 * Product action button.
+	 * Desktop hover image.
 	 *
-	 * Uses the Designces Core theme primary color instead
-	 * of a hardcoded reference-site button color.
-	 *
-	 * Current visual label:
-	 * "Add to cart →"
+	 * Only enable image swapping on devices that actually
+	 * support hover. This prevents unwanted behavior on
+	 * touch devices.
 	 */
-	&__button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
+	@media (hover: hover) and (pointer: fine) {
 
-		width: 100%;
-		padding: 0.8rem 1rem;
+		&__media:hover {
 
-		border-radius: 999px;
+			.product-card__image--hover {
+				opacity: 1;
+			}
 
-		background-color: $primary;
-		color: $white !important;
-
-		font-weight: 700;
-		text-decoration: none !important;
-
-		transition: opacity 0.2s ease;
-
-		&:hover {
-			background-color: $primary;
-			color: $white !important;
-			opacity: 0.9;
-		}
-
-		i {
-			font-size: 1rem;
+			.product-card__image:not(.product-card__image--hover) {
+				opacity: 0;
+			}
 		}
 	}
 }

@@ -11996,30 +11996,29 @@ textarea.form-control-lg {
    Popular Products
    ---------------------------------------------------------
    Section-level layout for the Popular Products component.
-   The product cards themselves are styled separately below.
+   The product cards themselves are styled separately.
    ========================================================= */
 .popular-products {
   /*
    * Product grid.
    *
-   * Desktop: 3 cards
+   * Desktop: 4 cards
    * Tablet:  2 cards
-   * Mobile:  1 card
+   * Mobile:  2 cards
    */
 }
 .popular-products__grid {
-  max-width: 1100px;
+  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
 }
 .popular-products {
   /*
-   * Product card width is controlled by the CSS Grid above.
-   * Reset the Bootstrap column width/margin because the
-   * product card is already a grid item.
+   * Product card is already a CSS Grid item.
+   * No Bootstrap column width is required here.
    */
 }
 .popular-products .product-card {
@@ -12043,7 +12042,7 @@ textarea.form-control-lg {
 }
 @media (max-width: 767.98px) {
   .popular-products__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -12090,73 +12089,116 @@ textarea.form-control-lg {
   position: relative;
   margin-bottom: 1.5rem;
   padding: 0;
-  border: 1px solid #e5dfd7;
-  border-radius: 1.4rem;
-  background-color: #fff;
-  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
   /*
-   * Product image area.
+   * Product media area.
    *
-   * The wrapper is positioned relatively so the sale badge
-   * can be positioned over the image.
+   * Keeps every product image at the same 4:5 ratio.
    */
 }
-.product-card__image-wrap {
+.product-card__media {
   position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
   overflow: hidden;
+  background-color: #e9eaed;
 }
 .product-card {
   /*
-   * Image link fills the available image area.
+   * Product image link fills the complete media area.
    */
 }
 .product-card__image-link {
   display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-decoration: none;
 }
 .product-card {
   /*
-   * WooCommerce product image.
-   *
-   * Height remains automatic for now because products may
-   * have different image compositions/aspect ratios.
+   * Primary and secondary product images.
    */
 }
 .product-card__image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  transition: opacity 0.3s ease;
+}
+.product-card {
+  /*
+   * Secondary image.
+   *
+   * Hidden by default and shown on desktop hover.
+   */
+}
+.product-card__image--hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.product-card {
+  /*
+   * Product badges container.
+   */
+}
+.product-card__badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+.product-card {
+  /*
+   * Individual product badge.
+   */
+}
+.product-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
 }
 .product-card {
   /*
    * Sale badge.
-   *
-   * Positioned inside the top-left corner of the image.
    */
 }
-.product-card__badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  background-color: #fff;
-  color: #3f3f3f;
-  font-size: 0.8rem;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.product-card__badge--sale {
+  background-color: #fff3b0;
+  border-color: #e5bd00;
+  color: #000;
 }
 .product-card {
   /*
    * Product information area.
    */
 }
-.product-card__body {
-  padding: 1.25rem 1.25rem 1.4rem;
-  text-align: center;
+.product-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem 1rem;
+  text-align: left;
 }
 .product-card {
   /*
@@ -12164,9 +12206,10 @@ textarea.form-control-lg {
    */
 }
 .product-card__title {
-  margin: 0 0 0.75rem;
-  font-size: 1.35rem;
-  font-weight: 800;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
 }
 .product-card__title a {
   color: #000;
@@ -12178,18 +12221,19 @@ textarea.form-control-lg {
 .product-card {
   /*
    * Product price.
-   *
-   * WooCommerce generates regular/sale price markup:
-   * <del>...</del>
-   * <ins>...</ins>
    */
 }
 .product-card__price {
-  margin-bottom: 1.25rem;
+  margin: 0;
   font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.product-card__price .price {
+  color: #000;
 }
 .product-card__price del {
-  margin-right: 0.3rem;
+  margin-right: 0.35rem;
   color: #777;
 }
 .product-card__price ins {
@@ -12199,36 +12243,20 @@ textarea.form-control-lg {
 }
 .product-card {
   /*
-   * Product action button.
+   * Desktop hover image.
    *
-   * Uses the Designces Core theme primary color instead
-   * of a hardcoded reference-site button color.
-   *
-   * Current visual label:
-   * "Add to cart →"
+   * Only enable image swapping on devices that actually
+   * support hover. This prevents unwanted behavior on
+   * touch devices.
    */
 }
-.product-card__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 999px;
-  background-color: rgb(127, 24, 127);
-  color: #fff !important;
-  font-weight: 700;
-  text-decoration: none !important;
-  transition: opacity 0.2s ease;
-}
-.product-card__button:hover {
-  background-color: rgb(127, 24, 127);
-  color: #fff !important;
-  opacity: 0.9;
-}
-.product-card__button i {
-  font-size: 1rem;
+@media (hover: hover) and (pointer: fine) {
+  .product-card__media:hover .product-card__image--hover {
+    opacity: 1;
+  }
+  .product-card__media:hover .product-card__image:not(.product-card__image--hover) {
+    opacity: 0;
+  }
 }
 
 /* =========================================================

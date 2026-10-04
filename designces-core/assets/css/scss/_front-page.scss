@@ -165,7 +165,7 @@
    Popular Products
    ---------------------------------------------------------
    Section-level layout for the Popular Products component.
-   The product cards themselves are styled separately below.
+   The product cards themselves are styled separately.
    ========================================================= */
 
 .popular-products {
@@ -173,28 +173,30 @@
 	/*
 	 * Product grid.
 	 *
-	 * Desktop: 3 cards
+	 * Desktop: 4 cards
 	 * Tablet:  2 cards
-	 * Mobile:  1 card
+	 * Mobile:  2 cards
 	 */
 	&__grid {
-		max-width: 1100px;
+		max-width: 100%;
 		margin-right: auto;
 		margin-left: auto;
+
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1.5rem;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 0.5rem;
 	}
 
+
 	/*
-	 * Product card width is controlled by the CSS Grid above.
-	 * Reset the Bootstrap column width/margin because the
-	 * product card is already a grid item.
+	 * Product card is already a CSS Grid item.
+	 * No Bootstrap column width is required here.
 	 */
 	.product-card {
 		width: auto;
 		margin: 0;
 	}
+
 
 	/*
 	 * Tablet layout.
@@ -206,13 +208,14 @@
 		}
 	}
 
+
 	/*
 	 * Mobile layout.
 	 */
 	@include media-breakpoint-down(md) {
 
 		&__grid {
-			grid-template-columns: 1fr;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 }
