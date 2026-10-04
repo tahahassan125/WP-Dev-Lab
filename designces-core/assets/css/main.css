@@ -11882,7 +11882,9 @@ textarea.form-control-lg {
   }
 }
 
-/************** FRONT PAGE **************/
+/********************************************************
+ * FRONT PAGE
+ ********************************************************/
 /* =========================================================
    Hero Ticker
    ---------------------------------------------------------
@@ -11927,15 +11929,9 @@ textarea.form-control-lg {
   }
 }
 
-/**************** SLIDER ****************/
-.carousel {
-  /*
-   * Full-width hero banner.
-   *
-   * The carousel keeps a controlled wide aspect ratio
-   * instead of using the image's full natural height.
-   */
-}
+/********************************************************
+ * HERO CAROUSEL
+ ********************************************************/
 .carousel .carousel-inner,
 .carousel .carousel-item {
   aspect-ratio: 16/6;
@@ -11947,10 +11943,11 @@ textarea.form-control-lg {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.carousel {
-  /*
-   * Carousel navigation controls.
-   */
+@media (max-width: 767.98px) {
+  .carousel .carousel-inner,
+  .carousel .carousel-item {
+    aspect-ratio: 5/7;
+  }
 }
 .carousel .carousel-control-prev,
 .carousel .carousel-control-next {
@@ -12046,6 +12043,35 @@ textarea.form-control-lg {
 }
 @media (max-width: 767.98px) {
   .popular-products__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   Special Offers
+   ---------------------------------------------------------
+   Section-level layout for sale products.
+   Reuses the shared product-card component.
+   ========================================================= */
+.special-offers__grid {
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.special-offers .product-card {
+  width: auto;
+  margin: 0;
+}
+@media (max-width: 991.98px) {
+  .special-offers__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767.98px) {
+  .special-offers__grid {
     grid-template-columns: 1fr;
   }
 }
@@ -12203,35 +12229,6 @@ textarea.form-control-lg {
 }
 .product-card__button i {
   font-size: 1rem;
-}
-
-/* =========================================================
-   Special Offers
-   ---------------------------------------------------------
-   Section-level layout for sale products.
-   Reuses the shared product-card component.
-   ========================================================= */
-.special-offers__grid {
-  max-width: 1100px;
-  margin-right: auto;
-  margin-left: auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-.special-offers .product-card {
-  width: auto;
-  margin: 0;
-}
-@media (max-width: 991.98px) {
-  .special-offers__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 767.98px) {
-  .special-offers__grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* =========================================================

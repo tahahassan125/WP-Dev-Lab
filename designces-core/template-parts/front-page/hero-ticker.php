@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Front-page hero ticker.
  *
@@ -17,23 +18,21 @@ $ticker_items = array(
 
 <section
 	class="hero-ticker"
-	aria-label="<?php esc_attr_e( 'Store announcements', 'designces-core' ); ?>"
->
+	aria-label="<?php esc_attr_e('Store announcements', 'designces-core'); ?>">
 
 	<div class="hero-ticker__track">
 
-		<?php for ( $group = 0; $group < 4; $group++ ) : ?>
+		<?php for ($group = 0; $group < 4; $group++) : ?>
 
 			<div
 				class="hero-ticker__group"
-				<?php echo 0 !== $group ? 'aria-hidden="true"' : ''; ?>
-			>
+				<?php echo 0 !== $group ? 'aria-hidden="true"' : ''; ?>>
 
-				<?php foreach ( $ticker_items as $ticker_item ) : ?>
+				<?php foreach ($ticker_items as $ticker_item) : ?>
 
 					<div class="hero-ticker__item">
 						<span aria-hidden="true">★</span>
-						<?php echo esc_html( $ticker_item ); ?>
+						<?php echo esc_html($ticker_item); ?>
 					</div>
 
 				<?php endforeach; ?>

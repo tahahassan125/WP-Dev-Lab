@@ -22,7 +22,7 @@ $sale: rgba(167, 4, 4, 0.8);
 $headings-font-family: 'Nunito', sans-serif;
 $headings-font-weight: 800;
 //$font-family-base: 'Poppins', sans-serif;
-$font-family-base: 'Source Sans Pro', sans-serif;
+$font-family-base: 'Source Sans Pro', sans-serif;  
 
 // ========================================
 // BOOTSTRAP THEME COLORS
@@ -77,6 +77,8 @@ $utilities: (
 @import "scss/header";
 
 @import "scss/front-page";
+
+@import "scss/product-card";
 
 @import "scss/footer";
 

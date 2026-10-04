@@ -1,0 +1,175 @@
+/* =========================================================
+   Product Card
+   ---------------------------------------------------------
+   Reusable WooCommerce product-card component.
+   Product data comes from WooCommerce; these styles only
+   control the visual presentation.
+   ========================================================= */
+
+.product-card {
+
+	/*
+	 * Main card container.
+	 */
+	position: relative;
+	margin-bottom: 1.5rem;
+	padding: 0;
+	border: 1px solid #e5dfd7;
+	border-radius: 1.4rem;
+	background-color: $white;
+	overflow: hidden;
+
+
+	/*
+	 * Product image area.
+	 *
+	 * The wrapper is positioned relatively so the sale badge
+	 * can be positioned over the image.
+	 */
+	&__image-wrap {
+		position: relative;
+		overflow: hidden;
+	}
+
+
+	/*
+	 * Image link fills the available image area.
+	 */
+	&__image-link {
+		display: block;
+	}
+
+
+	/*
+	 * WooCommerce product image.
+	 *
+	 * Height remains automatic for now because products may
+	 * have different image compositions/aspect ratios.
+	 */
+	&__image {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+
+	/*
+	 * Sale badge.
+	 *
+	 * Positioned inside the top-left corner of the image.
+	 */
+	&__badge {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+		z-index: 2;
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		padding: 0.45rem 0.9rem;
+
+		border-radius: 999px;
+
+		background-color: $white;
+		color: #3f3f3f;
+
+		font-size: 0.8rem;
+		font-weight: 700;
+
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+
+	/*
+	 * Product information area.
+	 */
+	&__body {
+		padding: 1.25rem 1.25rem 1.4rem;
+		text-align: center;
+	}
+
+
+	/*
+	 * Product title.
+	 */
+	&__title {
+		margin: 0 0 0.75rem;
+		font-size: 1.35rem;
+		font-weight: 800;
+
+		a {
+			color: $black;
+			text-decoration: none;
+
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
+
+
+	/*
+	 * Product price.
+	 *
+	 * WooCommerce generates regular/sale price markup:
+	 * <del>...</del>
+	 * <ins>...</ins>
+	 */
+	&__price {
+		margin-bottom: 1.25rem;
+		font-size: 1rem;
+
+		del {
+			margin-right: 0.3rem;
+			color: #777;
+		}
+
+		ins {
+			color: $primary;
+			font-weight: 700;
+			text-decoration: none;
+		}
+	}
+
+
+	/*
+	 * Product action button.
+	 *
+	 * Uses the Designces Core theme primary color instead
+	 * of a hardcoded reference-site button color.
+	 *
+	 * Current visual label:
+	 * "Add to cart →"
+	 */
+	&__button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+
+		width: 100%;
+		padding: 0.8rem 1rem;
+
+		border-radius: 999px;
+
+		background-color: $primary;
+		color: $white !important;
+
+		font-weight: 700;
+		text-decoration: none !important;
+
+		transition: opacity 0.2s ease;
+
+		&:hover {
+			background-color: $primary;
+			color: $white !important;
+			opacity: 0.9;
+		}
+
+		i {
+			font-size: 1rem;
+		}
+	}
+}
