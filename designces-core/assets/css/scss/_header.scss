@@ -33,7 +33,7 @@
 		margin-right: 6px;
 	}
 
-	
+
 
 	// Tablet/mobile: hidden below 992px.
 	@include media-breakpoint-down(lg) {
@@ -116,7 +116,7 @@
 
 	// Mobile navigation toggle.
 	// Hidden on desktop by default.
-	
+
 	&__menu-toggle {
 		display: none;
 	}
@@ -152,6 +152,8 @@
 		}
 
 		// Actual hamburger button.
+		//
+		// Uses the Bootstrap Icons `bi-list` icon.
 		.menu-toggle {
 			display: inline-flex;
 			align-items: center;
@@ -162,6 +164,11 @@
 			color: $primary;
 			font-size: 1.5rem;
 			line-height: 1;
+			cursor: pointer;
+
+			.bi {
+				display: block;
+			}
 		}
 	}
 }
@@ -229,21 +236,22 @@
 		// Offcanvas positioning
 		// ----------------------------------------
 		//
-		// Bootstrap normally starts the Offcanvas
-		// at the top of the viewport.
+		// The navigation should slide in BELOW the
+		// main header instead of covering it.
 		//
-		// When logged into WordPress, the Admin Bar
-		// occupies space at the top of the viewport.
+		// JavaScript calculates the actual bottom
+		// position of .site-header and stores it in:
 		//
-		// WordPress provides:
-		// --wp-admin--admin-bar--height
+		// --designces-main-header-bottom
 		//
-		// Fallback is 0px for normal visitors who
-		// do not have the Admin Bar.
+		// Fallback:
+		// If JavaScript has not set the variable yet,
+		// WordPress Admin Bar height is used.
 		// ----------------------------------------
 
 		&.offcanvas-start {
-			top: var(--wp-admin--admin-bar--height, 0px);
+			top: var(--designces-main-header-bottom,
+					var(--wp-admin--admin-bar--height, 0px));
 		}
 
 		// ----------------------------------------
@@ -274,14 +282,32 @@
 		// Offcanvas Close Button
 		// ----------------------------------------
 		//
-		// Bootstrap's default close icon is dark.
-		// Our navigation background is purple,
-		// therefore make the icon white.
+		// Uses Bootstrap Icons instead of Bootstrap's
+		// default `.btn-close` background SVG.
+		//
+		// `bi-x-lg` is loaded from our local
+		// Bootstrap Icons 1.13.1 package.
 		// ----------------------------------------
 
-		.btn-close {
-			filter: invert(1) grayscale(100%) brightness(200%);
-			opacity: 1;
+		.offcanvas-close {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			border: 0;
+			background: transparent;
+			color: $white;
+			font-size: 1.25rem;
+			line-height: 1;
+			cursor: pointer;
+
+			&:hover {
+				color: $white;
+			}
+
+			.bi {
+				display: block;
+			}
 		}
 
 		// ----------------------------------------

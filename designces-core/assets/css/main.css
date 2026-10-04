@@ -11775,6 +11775,10 @@ textarea.form-control-lg {
     color: rgb(127, 24, 127);
     font-size: 1.5rem;
     line-height: 1;
+    cursor: pointer;
+  }
+  .site-header .menu-toggle .bi {
+    display: block;
   }
 }
 
@@ -11807,7 +11811,7 @@ textarea.form-control-lg {
 }
 @media (max-width: 767.98px) {
   .main-navigation.offcanvas-start {
-    top: var(--wp-admin--admin-bar--height, 0px);
+    top: var(--designces-main-header-bottom, var(--wp-admin--admin-bar--height, 0px));
   }
   .main-navigation .offcanvas-header {
     display: flex;
@@ -11823,9 +11827,23 @@ textarea.form-control-lg {
     font-size: 1.25rem;
     font-weight: 800;
   }
-  .main-navigation .btn-close {
-    filter: invert(1) grayscale(100%) brightness(200%);
-    opacity: 1;
+  .main-navigation .offcanvas-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .main-navigation .offcanvas-close:hover {
+    color: #fff;
+  }
+  .main-navigation .offcanvas-close .bi {
+    display: block;
   }
   .main-navigation .offcanvas-body {
     padding: 0;

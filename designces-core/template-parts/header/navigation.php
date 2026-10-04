@@ -16,16 +16,17 @@
 	<div class="offcanvas-header">
 
 		<h2 id="site-navigation-title" class="offcanvas-title">
-			<?php esc_html_e( 'Navigation', 'designces-core' ); ?>
+			<?php esc_html_e('Navigation', 'designces-core'); ?>
 		</h2>
 
 		<button
 			type="button"
-			class="btn-close"
+			class="offcanvas-close"
 			data-bs-dismiss="offcanvas"
 			data-bs-target="#site-navigation"
-			aria-label="<?php esc_attr_e( 'Close navigation menu', 'designces-core' ); ?>"
-		></button>
+			aria-label="<?php esc_attr_e('Close navigation menu', 'designces-core'); ?>">
+			<i class="bi bi-x-lg" aria-hidden="true"></i>
+		</button>
 
 	</div>
 
