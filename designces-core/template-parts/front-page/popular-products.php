@@ -15,7 +15,7 @@
 		your pets healthy and spoiled!
 	</p>
 
-	<div class="row pt-5 pb-5 popular-products__grid">
+	<div class="pt-5 pb-5 popular-products__grid">
 
 		<?php
 		if ( class_exists( 'WooCommerce' ) ) {

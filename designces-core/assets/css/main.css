@@ -12002,7 +12002,7 @@ textarea.form-control-lg {
   /*
    * Product grid.
    *
-   * Desktop: 4 cards
+   * Desktop: 6 cards
    * Tablet:  2 cards
    * Mobile:  2 cards
    */
@@ -12052,26 +12052,50 @@ textarea.form-control-lg {
    Section-level layout for sale products.
    Reuses the shared product-card component.
    ========================================================= */
+.special-offers {
+  /*
+   * Product grid.
+   *
+   * Desktop: 6 cards per row
+   * Tablet:  2 cards per row
+   * Mobile:  2 cards per row
+   */
+}
 .special-offers__grid {
-  max-width: 1100px;
+  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.special-offers {
+  /*
+   * The CSS Grid controls card width and spacing.
+   */
 }
 .special-offers .product-card {
   width: auto;
   margin: 0;
+}
+.special-offers {
+  /*
+   * Tablet layout.
+   */
 }
 @media (max-width: 991.98px) {
   .special-offers__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+.special-offers {
+  /*
+   * Mobile layout.
+   */
+}
 @media (max-width: 767.98px) {
   .special-offers__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
