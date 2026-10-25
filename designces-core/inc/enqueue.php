@@ -112,6 +112,22 @@ function designces_core_enqueue_assets()
 
 
 	/**
+	 * Category Slider JavaScript.
+	 *
+	 * Controls the Previous and Next buttons
+	 * for the WooCommerce category slider.
+	 */
+	wp_enqueue_script(
+		'designces-core-category-slider',
+		get_template_directory_uri() . '/assets/js/category-slider.js',
+		array(),
+		filemtime(get_template_directory() . '/assets/js/category-slider.js'),
+		true
+	);
+
+
+
+	/**
 	 * Comment reply script.
 	 */
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
