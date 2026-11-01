@@ -79,7 +79,7 @@ if (is_wp_error($product_categories) || empty($product_categories)) {
 ?>
 
 <section class="category-slider py-4">
-    <div class="container-fluid">
+    <div class="container">
 
         <?php
         /**
@@ -89,27 +89,6 @@ if (is_wp_error($product_categories) || empty($product_categories)) {
          * so they remain stationary while categories scroll.
          */
         ?>
-        <div class="category-slider__header d-flex justify-content-end mb-3">
-
-            <div class="category-slider__controls d-flex gap-2">
-
-                <button
-                    type="button"
-                    class="category-slider__prev"
-                    aria-label="<?php esc_attr_e('Previous categories', 'designces-core'); ?>">
-                    <i class="bi bi-chevron-left" aria-hidden="true"></i>
-                </button>
-
-                <button
-                    type="button"
-                    class="category-slider__next"
-                    aria-label="<?php esc_attr_e('Next categories', 'designces-core'); ?>">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-
-            </div>
-
-        </div>
 
         <!-- ===============================================
 		     CATEGORY SLIDER TRACK

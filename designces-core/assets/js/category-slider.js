@@ -1,112 +1,326 @@
-
 /**
  * Designces Core — Category Slider
  *
  * Purpose:
- * Controls the Previous and Next buttons for the
- * front-page WooCommerce category slider.
+ * Provides manual horizontal scrolling and automatic
+ * category scrolling without navigation buttons.
  *
  * Responsibilities:
- * - Scroll the category track horizontally.
- * - Provide smooth scrolling.
- * - Work alongside CSS scroll-snap.
+ * - Support native touch and trackpad scrolling.
+ * - Automatically move to the next category.
+ * - Pause autoplay during user interaction.
+ * - Resume autoplay after user inactivity.
+ * - Pause autoplay when slider is outside the viewport.
+ * - Respect the user's reduced-motion preference.
  *
- * CSS remains responsible for the slider layout,
- * card sizing, responsive behavior and scroll-snap.
+ * CSS handles layout, card sizing and scroll-snap.
  */
 
 (function () {
-	'use strict';
+  "use strict";
 
-	/**
-	 * =====================================================
-	 * INITIALIZE CATEGORY SLIDERS
-	 * =====================================================
-	 *
-	 * Find category slider components on the page and
-	 * attach their navigation controls.
-	 *
-	 * querySelectorAll() allows multiple instances of the
-	 * component to work independently on the same page.
-	 */
-	function initializeCategorySliders() {
+  const AUTOPLAY_DELAY = 3500;
+  const RESUME_DELAY = 5000;
 
-		const sliders = document.querySelectorAll('.category-slider');
+  /**
+   * Initialize all category sliders.
+   */
+  function initializeCategorySliders() {
+    const sliders = document.querySelectorAll(".category-slider");
 
-		sliders.forEach(function (slider) {
+    sliders.forEach(function (slider) {
+      const track = slider.querySelector(".category-slider__track");
 
-			const track = slider.querySelector('.category-slider__track');
-			const previousButton = slider.querySelector('.category-slider__prev');
-			const nextButton = slider.querySelector('.category-slider__next');
+      if (!track) {
+        return;
+      }
 
-			/*
-			 * Skip incomplete slider markup safely.
-			 */
-			if (!track || !previousButton || !nextButton) {
-				return;
-			}
+      // Respect reduced-motion accessibility preference.
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-			/*
-			 * Calculate how far the track should scroll
-			 * when a navigation button is clicked.
-			 *
-			 * Scrolling by 80% of the visible width provides
-			 * a useful movement without skipping too much
-			 * of the category slider.
-			 */
-			function getScrollDistance() {
-				return track.clientWidth * 0.8;
-			}
+      if (prefersReducedMotion) {
+        return;
+      }
 
-			/*
-			 * Previous button:
-			 * Scroll the track towards the beginning.
-			 */
-			previousButton.addEventListener('click', function () {
+      let autoplayTimer = null;
+      let resumeTimer = null;
+      let isVisible = false;
+      //let isHovered = false;
+      let isFocused = false;
+      let isInteracting = false;
 
-				track.scrollBy({
-					left: -getScrollDistance(),
-					behavior: 'smooth'
-				});
+      /**
+       * Check whether the track has content to scroll.
+       */
+      function canScroll() {
+        return track.scrollWidth > track.clientWidth + 2;
+      }
 
-			});
+      /**
+       * Clear the autoplay timer.
+       */
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearTimeout(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
 
-			/*
-			 * Next button:
-			 * Scroll the track towards the end.
-			 */
-			nextButton.addEventListener('click', function () {
+      /**
+       * Schedule the next automatic movement.
+       */
+      function scheduleAutoplay() {
+        stopAutoplay();
 
-				track.scrollBy({
-					left: getScrollDistance(),
-					behavior: 'smooth'
-				});
+        if (!isVisible || isFocused || isInteracting || !canScroll()) {
+          return;
+        }
 
-			});
+        autoplayTimer = setTimeout(function () {
+          moveToNextCategory();
 
-		});
-	}
+          scheduleAutoplay();
+        }, AUTOPLAY_DELAY);
+      }
 
+      /**
+       * Move the track to the next category.
+       */
+      function moveToNextCategory() {
+        const firstCard = track.querySelector(".category-card");
 
-	/**
-	 * =====================================================
-	 * INITIALIZATION
-	 * =====================================================
-	 *
-	 * Wait until the document has been parsed before
-	 * searching for the slider markup.
-	 */
-	if (document.readyState === 'loading') {
+        if (!firstCard || !canScroll()) {
+          return;
+        }
 
-		document.addEventListener(
-			'DOMContentLoaded',
-			initializeCategorySliders
-		);
+        const cardStyle = getComputedStyle(track);
+        const gap = parseFloat(cardStyle.columnGap) || 0;
 
-	} else {
+        const cardWidth = firstCard.getBoundingClientRect().width;
+        const scrollDistance = cardWidth + gap;
 
-		initializeCategorySliders();
+        const maxScroll = track.scrollWidth - track.clientWidth;
 
-	}
+        const nextPosition = track.scrollLeft + scrollDistance;
 
+        // Return to the beginning after reaching the end.
+        if (nextPosition >= maxScroll - 2) {
+          track.scrollTo({
+            left: 0,
+            behavior: "smooth",
+          });
+        } else {
+          track.scrollBy({
+            left: scrollDistance,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      /**
+       * Pause autoplay during user interaction.
+       */
+      function pauseAutoplay() {
+        isInteracting = true;
+
+        stopAutoplay();
+
+        if (resumeTimer) {
+          clearTimeout(resumeTimer);
+        }
+
+        resumeTimer = setTimeout(function () {
+          isInteracting = false;
+
+          scheduleAutoplay();
+        }, RESUME_DELAY);
+      }
+
+      /**
+       * Pause when keyboard focus enters the slider.
+       */
+      slider.addEventListener("focusin", function () {
+        isFocused = true;
+        stopAutoplay();
+      });
+
+      slider.addEventListener("focusout", function () {
+        setTimeout(function () {
+          isFocused = slider.contains(document.activeElement);
+
+          scheduleAutoplay();
+        }, 0);
+      });
+
+      /**
+       * Detect manual touch, pointer and wheel interaction.
+       */
+      track.addEventListener("pointerdown", pauseAutoplay, {
+        passive: true,
+      });
+
+      track.addEventListener("touchstart", pauseAutoplay, {
+        passive: true,
+      });
+
+      track.addEventListener("wheel", pauseAutoplay, {
+        passive: true,
+      });
+
+      track.addEventListener("keydown", pauseAutoplay);
+
+      /**
+       * Desktop click-and-drag scrolling.
+       *
+       * Users can drag from anywhere inside the slider track,
+       * including category cards and empty track space.
+       *
+       * Normal cursor is maintained.
+       */
+
+      let isDragging = false;
+      let hasDragged = false;
+
+      let startX = 0;
+      let startScrollLeft = 0;
+
+      let activePointerId = null;
+
+      const DRAG_THRESHOLD = 5;
+
+      /**
+       * Start dragging with the primary mouse button.
+       */
+      track.addEventListener("pointerdown", function (event) {
+        // Only handle mouse input, not touch or pen.
+        if (event.pointerType !== "mouse" || event.button !== 0) {
+          return;
+        }
+
+        isDragging = true;
+        hasDragged = false;
+
+        activePointerId = event.pointerId;
+
+        startX = event.clientX;
+        startScrollLeft = track.scrollLeft;
+
+        // Keep receiving pointer events outside the track.
+        track.setPointerCapture(event.pointerId);
+      });
+
+      /**
+       * Move the slider horizontally.
+       */
+      track.addEventListener("pointermove", function (event) {
+        if (!isDragging || event.pointerId !== activePointerId) {
+          return;
+        }
+
+        const distance = event.clientX - startX;
+
+        // Ignore small movements to preserve normal clicks.
+        if (Math.abs(distance) > DRAG_THRESHOLD) {
+          hasDragged = true;
+        }
+
+        if (hasDragged) {
+          event.preventDefault();
+
+          track.scrollLeft = startScrollLeft - distance;
+        }
+      });
+
+      /**
+       * Finish dragging.
+       */
+      function stopDragging(event) {
+        if (!isDragging || event.pointerId !== activePointerId) {
+          return;
+        }
+
+        isDragging = false;
+        activePointerId = null;
+      }
+
+      /**
+       * Handle pointer release and cancellation.
+       */
+      track.addEventListener("pointerup", stopDragging);
+      track.addEventListener("pointercancel", stopDragging);
+
+      /**
+       * Prevent native image and link dragging.
+       */
+      track.addEventListener("dragstart", function (event) {
+        event.preventDefault();
+      });
+
+      /**
+       * Prevent category navigation after dragging.
+       * Normal clicks remain functional.
+       */
+      track.addEventListener(
+        "click",
+        function (event) {
+          if (hasDragged) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            hasDragged = false;
+          }
+        },
+        true,
+      );
+
+      /**
+       * Pause autoplay when the page is hidden.
+       */
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          stopAutoplay();
+        } else {
+          scheduleAutoplay();
+        }
+      });
+
+      /**
+       * Start autoplay only when the slider is visible.
+       */
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              isVisible = entry.isIntersecting;
+
+              if (isVisible) {
+                scheduleAutoplay();
+              } else {
+                stopAutoplay();
+              }
+            });
+          },
+          {
+            threshold: 0.25,
+          },
+        );
+
+        observer.observe(slider);
+      } else {
+        isVisible = true;
+        scheduleAutoplay();
+      }
+    });
+  }
+
+  /**
+   * Initialize after the document is ready.
+   */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeCategorySliders);
+  } else {
+    initializeCategorySliders();
+  }
 })();

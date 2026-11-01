@@ -117,7 +117,7 @@ $thumbnail_id = (int) get_term_meta(
             </span>
 
             <span class="category-card__more">
-                <?php esc_html_e( 'View category', 'designces-core' ); ?>
+                <?php esc_html_e( 'See details', 'designces-core' ); ?>
             </span>
 
         </div>
