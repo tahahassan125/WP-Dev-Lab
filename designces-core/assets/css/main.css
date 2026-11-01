@@ -11882,9 +11882,36 @@ textarea.form-control-lg {
   }
 }
 
-/********************************************************
- * FRONT PAGE
- ********************************************************/
+/* =========================================================
+   FRONT PAGE — STYLING GUIDELINES
+   ---------------------------------------------------------
+   This file contains styles specifically related to the
+   front-page layout and its page-specific sections.
+
+   RESPONSIBILITY:
+   - Hero Ticker
+   - Hero Carousel
+   - Popular Products section layout
+   - Special Offers section layout
+   - Other homepage-specific styling
+
+   ARCHITECTURE RULES:
+   - Keep homepage-specific styling in this file.
+   - Keep reusable component styling in separate SCSS files.
+   - Do not move independent component styles into this file
+     simply because the component appears on the front page.
+
+   Examples:
+   - Category Slider  → _category-slider.scss
+   - Product Card     → _product-card.scss
+   - Header           → _header.scss
+   - Footer           → _footer.scss
+
+   GENERAL PRINCIPLE:
+   Page-specific styling  = Page SCSS
+   Reusable component     = Component SCSS
+
+   ========================================================= */
 /* =========================================================
    Hero Ticker
    ---------------------------------------------------------
@@ -11954,14 +11981,72 @@ textarea.form-control-lg {
   width: 9%;
 }
 
-/************** POPULAR PRODUCTS **************/
+/* =========================================================
+   Popular Products
+   ---------------------------------------------------------
+   Section-level layout for the Popular Products component.
+   The product cards themselves are styled separately.
+   ========================================================= */
+/* =========================================================
+   Popular Products
+   ---------------------------------------------------------
+   Section background, product styling and responsive grid.
+   ========================================================= */
+.popular-products {
+  /* Section background */
+  background: linear-gradient(180deg, #fffdf9 0%, #fdead0 50%, #f9c978 100%);
+  /* Add to cart button */
+}
 .popular-products .add_to_cart_button {
   display: block !important;
   text-align: center;
 }
+.popular-products {
+  /* Product thumbnail */
+}
 .popular-products .attachment-woocommerce_thumbnail {
   border-radius: 20px;
   overflow: hidden;
+}
+.popular-products {
+  /*
+   * Product grid.
+   *
+   * Desktop: 6 cards
+   * Tablet:  2 cards
+   * Mobile:  2 cards
+   */
+}
+.popular-products__grid {
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.popular-products {
+  /* Product card */
+}
+.popular-products .product-card {
+  width: auto;
+  margin: 0;
+}
+.popular-products {
+  /* Tablet layout */
+}
+@media (max-width: 991.98px) {
+  .popular-products__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.popular-products {
+  /* Mobile layout */
+}
+@media (max-width: 767.98px) {
+  .popular-products__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /************** CATEGORIES **************/
@@ -11982,84 +12067,35 @@ textarea.form-control-lg {
   }
 }
 
-/************** SPECIAL OFFERS **************/
-.special-offers .add_to_cart_button {
-  display: block !important;
-  text-align: center;
-}
-.special-offers .attachment-woocommerce_thumbnail {
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-/* =========================================================
-   Popular Products
-   ---------------------------------------------------------
-   Section-level layout for the Popular Products component.
-   The product cards themselves are styled separately.
-   ========================================================= */
-.popular-products {
-  /*
-   * Product grid.
-   *
-   * Desktop: 6 cards
-   * Tablet:  2 cards
-   * Mobile:  2 cards
-   */
-}
-.popular-products__grid {
-  max-width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0.5rem;
-}
-.popular-products {
-  /*
-   * Product card is already a CSS Grid item.
-   * No Bootstrap column width is required here.
-   */
-}
-.popular-products .product-card {
-  width: auto;
-  margin: 0;
-}
-.popular-products {
-  /*
-   * Tablet layout.
-   */
-}
-@media (max-width: 991.98px) {
-  .popular-products__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-.popular-products {
-  /*
-   * Mobile layout.
-   */
-}
-@media (max-width: 767.98px) {
-  .popular-products__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 /* =========================================================
    Special Offers
    ---------------------------------------------------------
    Section-level layout for sale products.
    Reuses the shared product-card component.
    ========================================================= */
+/* =========================================================
+   Special Offers
+   ---------------------------------------------------------
+   Section background, sale product styling and grid.
+   ========================================================= */
 .special-offers {
-  /*
-   * Product grid.
-   *
-   * Desktop: 6 cards per row
-   * Tablet:  2 cards per row
-   * Mobile:  2 cards per row
-   */
+  /* Section background */
+  background: linear-gradient(180deg, #fffdf9 0%, #fdead0 50%, #f9c978 100%);
+  /* Add to cart button */
+}
+.special-offers .add_to_cart_button {
+  display: block !important;
+  text-align: center;
+}
+.special-offers {
+  /* Product thumbnail */
+}
+.special-offers .attachment-woocommerce_thumbnail {
+  border-radius: 20px;
+  overflow: hidden;
+}
+.special-offers {
+  /* Product grid */
 }
 .special-offers__grid {
   max-width: 100%;
@@ -12070,18 +12106,14 @@ textarea.form-control-lg {
   gap: 0.5rem;
 }
 .special-offers {
-  /*
-   * The CSS Grid controls card width and spacing.
-   */
+  /* Product card */
 }
 .special-offers .product-card {
   width: auto;
   margin: 0;
 }
 .special-offers {
-  /*
-   * Tablet layout.
-   */
+  /* Tablet layout */
 }
 @media (max-width: 991.98px) {
   .special-offers__grid {
@@ -12089,9 +12121,7 @@ textarea.form-control-lg {
   }
 }
 .special-offers {
-  /*
-   * Mobile layout.
-   */
+  /* Mobile layout */
 }
 @media (max-width: 767.98px) {
   .special-offers__grid {
@@ -12109,6 +12139,7 @@ textarea.form-control-lg {
    This file handles slider-specific layout and appearance.
    ========================================================= */
 .category-slider {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f4 50%, #f7f4ef 100%);
   /* Horizontal slider track */
 }
 .category-slider__track {

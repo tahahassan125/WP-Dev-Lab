@@ -16,7 +16,7 @@
 	</h1>
 
 	<p class="text-center">
-		We offer a number of high quality toys to help keep<br>
+		We offer a number of high quality toys to help keep
 		your pets healthy and spoiled!
 	</p>
 

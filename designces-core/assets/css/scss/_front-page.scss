@@ -1,6 +1,35 @@
-/********************************************************
- * FRONT PAGE
- ********************************************************/
+
+/* =========================================================
+   FRONT PAGE — STYLING GUIDELINES
+   ---------------------------------------------------------
+   This file contains styles specifically related to the
+   front-page layout and its page-specific sections.
+
+   RESPONSIBILITY:
+   - Hero Ticker
+   - Hero Carousel
+   - Popular Products section layout
+   - Special Offers section layout
+   - Other homepage-specific styling
+
+   ARCHITECTURE RULES:
+   - Keep homepage-specific styling in this file.
+   - Keep reusable component styling in separate SCSS files.
+   - Do not move independent component styles into this file
+     simply because the component appears on the front page.
+
+   Examples:
+   - Category Slider  → _category-slider.scss
+   - Product Card     → _product-card.scss
+   - Header           → _header.scss
+   - Footer           → _footer.scss
+
+   GENERAL PRINCIPLE:
+   Page-specific styling  = Page SCSS
+   Reusable component     = Component SCSS
+
+   ========================================================= */
+
 
 
 /* =========================================================
@@ -103,20 +132,76 @@
 }
 
 
-/************** POPULAR PRODUCTS **************/
+/* =========================================================
+   Popular Products
+   ---------------------------------------------------------
+   Section-level layout for the Popular Products component.
+   The product cards themselves are styled separately.
+   ========================================================= */
+
+
+/* =========================================================
+   Popular Products
+   ---------------------------------------------------------
+   Section background, product styling and responsive grid.
+   ========================================================= */
 
 .popular-products {
 
-	.add_to_cart_button {
-		display: block !important;
-		text-align: center;
-	}
+    /* Section background */
+    background: $section-warm-gradient;
 
-	.attachment-woocommerce_thumbnail {
-		border-radius: 20px;
-		overflow: hidden;
-	}
+    /* Add to cart button */
+    .add_to_cart_button {
+        display: block !important;
+        text-align: center;
+    }
+
+    /* Product thumbnail */
+    .attachment-woocommerce_thumbnail {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    /*
+     * Product grid.
+     *
+     * Desktop: 6 cards
+     * Tablet:  2 cards
+     * Mobile:  2 cards
+     */
+    &__grid {
+        max-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+
+    /* Product card */
+    .product-card {
+        width: auto;
+        margin: 0;
+    }
+
+    /* Tablet layout */
+    @include media-breakpoint-down(lg) {
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    /* Mobile layout */
+    @include media-breakpoint-down(md) {
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
 }
+
+
 
 
 
@@ -141,89 +226,6 @@
 	}
 }
 
-/************** SPECIAL OFFERS **************/
-
-.special-offers {
-
-	.add_to_cart_button {
-		display: block !important;
-		text-align: center;
-	}
-
-	.attachment-woocommerce_thumbnail {
-		border-radius: 20px;
-		overflow: hidden;
-	}
-}
-
-
-
-
-
-
-/* =========================================================
-   Popular Products
-   ---------------------------------------------------------
-   Section-level layout for the Popular Products component.
-   The product cards themselves are styled separately.
-   ========================================================= */
-
-.popular-products {
-
-
-	/*
-	 * Product grid.
-	 *
-	 * Desktop: 6 cards
-	 * Tablet:  2 cards
-	 * Mobile:  2 cards
-	 */
-	&__grid {
-		max-width: 100%;
-		margin-right: auto;
-		margin-left: auto;
-
-		display: grid;
-		grid-template-columns: repeat(6, minmax(0, 1fr));
-		gap: 0.5rem;
-	}
-
-
-	/*
-	 * Product card is already a CSS Grid item.
-	 * No Bootstrap column width is required here.
-	 */
-	.product-card {
-		width: auto;
-		margin: 0;
-	}
-
-
-	/*
-	 * Tablet layout.
-	 */
-	@include media-breakpoint-down(lg) {
-
-		&__grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
-
-	/*
-	 * Mobile layout.
-	 */
-	@include media-breakpoint-down(md) {
-
-		&__grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-}
-
-
-
-
 
 
 
@@ -234,50 +236,59 @@
    Reuses the shared product-card component.
    ========================================================= */
 
+
+/* =========================================================
+   Special Offers
+   ---------------------------------------------------------
+   Section background, sale product styling and grid.
+   ========================================================= */
+
 .special-offers {
 
-	/*
-	 * Product grid.
-	 *
-	 * Desktop: 6 cards per row
-	 * Tablet:  2 cards per row
-	 * Mobile:  2 cards per row
-	 */
-	&__grid {
-		max-width: 100%;
-		margin-right: auto;
-		margin-left: auto;
+    /* Section background */
+    background: $section-warm-gradient;
 
-		display: grid;
-		grid-template-columns: repeat(6, minmax(0, 1fr));
-		gap: 0.5rem;
-	}
+    /* Add to cart button */
+    .add_to_cart_button {
+        display: block !important;
+        text-align: center;
+    }
 
-	/*
-	 * The CSS Grid controls card width and spacing.
-	 */
-	.product-card {
-		width: auto;
-		margin: 0;
-	}
+    /* Product thumbnail */
+    .attachment-woocommerce_thumbnail {
+        border-radius: 20px;
+        overflow: hidden;
+    }
 
-	/*
-	 * Tablet layout.
-	 */
-	@include media-breakpoint-down(lg) {
+    /* Product grid */
+    &__grid {
+        max-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
 
-		&__grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
 
-	/*
-	 * Mobile layout.
-	 */
-	@include media-breakpoint-down(md) {
+    /* Product card */
+    .product-card {
+        width: auto;
+        margin: 0;
+    }
 
-		&__grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
+    /* Tablet layout */
+    @include media-breakpoint-down(lg) {
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    /* Mobile layout */
+    @include media-breakpoint-down(md) {
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
 }
+

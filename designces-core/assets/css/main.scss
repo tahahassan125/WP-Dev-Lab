@@ -62,6 +62,14 @@ $utilities: (
 );
 
 
+// Shared warm vertical gradient for homepage sections.
+$section-warm-gradient: linear-gradient(
+    180deg,
+    #fffdf9 0%,
+    #fdead0 50%,
+    #f9c978 100%
+);
+
 // ========================================
 // BOOTSTRAP
 // ========================================
