@@ -17,6 +17,8 @@ get_header();
 
 	get_template_part( 'template-parts/front-page/category-slider' );
 
+	get_template_part( 'template-parts/front-page/campaign-section' );
+
 	get_template_part( 'template-parts/front-page/popular', 'products' );
 
 	get_template_part( 'template-parts/front-page/categories' );

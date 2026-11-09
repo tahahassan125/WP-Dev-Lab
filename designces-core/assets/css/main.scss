@@ -65,9 +65,9 @@ $utilities: (
 // Shared warm vertical gradient for homepage sections.
 $section-warm-gradient: linear-gradient(
     180deg,
-    #fffdf9 0%,
-    #fdead0 50%,
-    #f9c978 100%
+    #F8F9FA 0%,
+    #E8EAEE 50%,
+    #DDE1E7 100%
 );
 
 // ========================================
@@ -87,6 +87,8 @@ $section-warm-gradient: linear-gradient(
 @import "scss/front-page";
 
 @import "scss/category-slider";
+
+@import "scss/campaign-section";
 
 @import "scss/product-card";
 

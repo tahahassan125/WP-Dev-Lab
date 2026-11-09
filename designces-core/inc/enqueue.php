@@ -125,6 +125,35 @@ function designces_core_enqueue_assets()
 		true
 	);
 
+	/**
+	 * Campaign Product Slider JavaScript.
+	 *
+	 * Handles Previous and Next navigation
+	 * for campaign products.
+	 */
+	wp_enqueue_script(
+		'designces-core-campaign-slider',
+		get_template_directory_uri() . '/assets/js/campaign-slider.js',
+		array(),
+		filemtime(get_template_directory() . '/assets/js/campaign-slider.js'),
+		true
+	);
+
+
+	/**
+	 * Campaign Countdown JavaScript.
+	 *
+	 * Updates the countdown timer for the active
+	 * front-page campaign.
+	 */
+	wp_enqueue_script(
+		'designces-core-campaign-countdown',
+		get_template_directory_uri() . '/assets/js/campaign-countdown.js',
+		array(),
+		filemtime(get_template_directory() . '/assets/js/campaign-countdown.js'),
+		true
+	);
+
 
 
 	/**
